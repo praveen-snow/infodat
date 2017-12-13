@@ -1,0 +1,13 @@
+@import "../../styles/_common";
+
+.appBackground {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: $qzt_wht;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	overflow-y: auto;
+	z-index: -10;
+	top: 6em;
+}

@@ -1,0 +1,45 @@
+@import "../../styles/_common";
+
+.VZ_BasicModal {
+  background-color: rgba(73, 80, 87, 0.4196078431372549);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  transform: translate3d(0, 0, 20px);
+  /* Fix for iOS & Safari */
+  .MainContent {
+    p {
+      display: block;
+      font-size: 19px;
+      text-align: justify;
+      margin: auto;
+      padding: 30px;
+      @include respond(small) {
+        margin-left: 5em;
+      }
+    }
+  }
+
+  .ModalWrap {
+    position: relative;
+    width: 50%;
+    height: 500px;
+    box-shadow: 0 0 5px 0;
+    background: #f4f5f5;
+    @include respond(medium) {
+      width: 60%;
+    }
+    @include respond(small) {
+      border-radius: 0;
+      box-shadow: none;
+      width: 100%;
+    }
+  }
+}
