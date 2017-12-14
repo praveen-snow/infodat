@@ -30,5 +30,15 @@ export default {
         VM(store) {
             return require("vms/signup")(store);
         }
+    },
+    activateAcount:{
+        Enter: {x: spring(-100,[300,20]), z: 2 },
+        Leave: {x: spring(-100,[300,25]), z: 2 },
+        Styles(val) {
+            return { x:spring(val.x), y: val.y, z: 2, opacity: val.opacity};
+        },
+        VM(store) {
+            return require("vms/activateAccount")(store);
+        }
     }
 };

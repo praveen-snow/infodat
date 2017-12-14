@@ -34,7 +34,19 @@ const signupVM = function(store) {
           )
         }
       });
-    }}/>);
+    }}
+    submit={()=>{
+      store.dispatch({
+        type: 'NAV_SET_ROUTE_STACK_BASE',
+        payload: {
+          history: [],
+          current: {
+            activateAcount: true
+          }
+        }
+      });
+    }}
+    />);
 }
 //
 export default signupVM;

@@ -1,0 +1,208 @@
+@import "../../styles/_common";
+.QRZT_BasicModal {
+    background-color: rgba(73, 80, 87, 0.4196078431372549);
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100vw;
+    height: 94vh; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    transform: translate3d(0, 0, 20px);
+    font-family: 'Avenir', sans-serif;
+    color: #484848;
+    /* Fix for iOS & Safari */
+    .MainContent {
+      width: 650px;
+      margin: auto;
+      p {
+        font-family: 'Avenir', sans-serif;
+        display: block;
+        font-size: 18px;
+        font-weight: 100;
+        text-align: center;
+        margin: auto;
+        padding: 30px;
+        @include respond(small) {
+          margin-left: 5em;
+        }
+      }
+    }
+    h2{
+        font-weight: 100;
+        padding-top: 40px;
+        margin-bottom: 0;
+    }
+  
+    .ModalWrap {
+        position: relative;
+        width: 65%;
+        height: 560px;
+        background: #ffffff;
+      @include respond(medium) {
+        width: 60%;
+      }
+      @include respond(small) {
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+      }
+      .wEmail{
+
+      }
+      .email{
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 0;
+      }
+      .field {
+        position: relative;
+        width: 60%;
+        margin-bottom: 10px;
+        margin: auto;
+    }
+
+    input:focus {
+        outline: none;
+        border: 1px solid #000;
+    }
+    /* active state */
+    input:focus ~ field-label {
+        top: 18%;
+        font-size: 10px;
+        color: #A5A4A5;
+    }
+        .noErrorField {
+            color: #555;
+            font-size: 18px;
+            padding: 24px 10px 2px 4.5%;
+            display: block;
+            width: 100%;
+            border: 1px solid #e3e3e3;
+            border-bottom: 1px solid #e3e3e3;
+            background: #f5f5f5;
+        }
+
+        input.errorField:focus{
+            border: 1px solid $qzt_red;
+        }
+
+        .errorField{
+            border: 1px solid $qzt_red;
+        }
+
+        field-label {
+            color: #787878;
+            font-size: 13px;
+            font-weight: 100;
+            position: absolute;
+            pointer-events: none;
+            left: 7.5%;
+            top: 18%;
+            transition: 0.2s ease-in-out all;
+            -moz-transition: 0.2s ease-in-out all;
+            -webkit-transition: 0.2s ease-in-out all;
+        }
+        .downArrow, .success, .error {
+			float: right;
+			position: relative;
+			z-index: 2;
+			margin-right: 30px;
+			font-size: 26px;
+			margin-top: -41px;
+        }
+        .dropDownList {
+            width: 95%;
+            position: absolute;
+            top: 100%;
+            left: 23px;        
+			z-index: 1000;
+			float: left;
+			min-width: 160px;
+			padding: 5px 0;
+			font-size: 14px;
+			text-align: left;
+			list-style: none;
+			background-color: #fff;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box;
+			border: 1px solid #ccc;
+			-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+			box-shadow: 0 6px 12px rgba(0,0,0,.175);
+			li:hover{
+				color: #ffffff;
+				background-color: #000000;
+			}
+        }
+        .form {
+            width: 60%;
+            top: 1%;
+            height: auto;
+            margin: auto;
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.2);
+            outline: 0;
+    
+            li {
+                padding: 8px;
+            }
+        }
+        .form-check {
+
+			.form-check-label {
+				font-size: 12px;
+                color:rgba(120, 120, 120, 0.74);
+                width: 100%;
+			}
+
+            li {
+                padding: 8px;
+            }
+
+			input[type="checkbox"] {
+				margin-top: 3px;
+		    width: auto!important;
+		    border-radius: unset;
+			}
+
+			a {
+				font-size: 11px;
+			}
+        }
+        .center-block{
+            padding: 20px;
+        }
+        .widthCorrection{
+            padding-left: 0;
+        }
+        .submitBtn{
+            padding: 5px 15px;
+            text-align: center;
+            letter-spacing: .5px;
+            width: 50%;
+            min-width: 300px;
+            height: 55px;
+            border: 0;
+            outline: none;
+            background: #030303;
+            cursor: pointer;
+            color: #dadada;
+            font-size: 14px;
+            margin: 0 auto;
+        }
+        .networkApplyForm {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+  }

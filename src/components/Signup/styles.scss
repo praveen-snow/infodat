@@ -158,6 +158,17 @@
 					margin-bottom: 10px;
 				}
 
+				input:focus {
+					outline: none;
+					border: 1px solid #000;
+				}
+				/* active state */
+				input:focus ~ field-label {
+					top: 18%;
+					font-size: 10px;
+					color: #A5A4A5;
+				}
+
 				.noErrorField {
 					color: #555;
 					font-size: 18px;
@@ -169,19 +180,14 @@
 					background: #f5f5f5;
 				}
 
+				input.errorField:focus{
+					border: 1px solid $qzt_red;
+				}
+
 				.errorField{
 					border: 1px solid $qzt_red;
 				}
 
-				input:focus {
-					outline: none;
-				}
-				/* active state */
-				input:focus ~ field-label {
-					top: 18%;
-					font-size: 10px;
-					color: #A5A4A5;
-				}
 
 				field-label {
 					color: #787878;
@@ -219,7 +225,7 @@
 					height: 40px;
 					border: 0;
 					outline: none;
-					background: rgb(179,179,179);
+					background: rgb(3, 3, 3);
 					cursor: pointer;
 					color: #DADADA;
 					font-size: 13px;
