@@ -33,7 +33,7 @@ export default React.createClass({
                         </div>
                         <div className="rightWrapper">
                           <button type="button" className="btn btn-primary btnPrimary" onClick={this.applyForm} >
-                            Apply
+                            APPLY
                           </button>
                         </div>
                     </div>

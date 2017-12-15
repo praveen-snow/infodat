@@ -81,6 +81,9 @@
 			.form-check-input {
 				font-size: 12px;
 			}
+			.notChecked{
+				outline: 1px solid $qzt_red;
+			}
 
 			input[type="checkbox"] {
 				margin-top: 3px;
@@ -225,11 +228,16 @@
 					height: 40px;
 					border: 0;
 					outline: none;
-					background: rgb(3, 3, 3);
 					cursor: pointer;
 					color: #DADADA;
 					font-size: 13px;
 					margin: 0 auto;
+				}
+				.DisableBtn{
+					background: rgb(179,179,179);
+				}
+				.EnableBtn{
+					background: rgb(3, 3, 3);
 				}
 			}
 		}

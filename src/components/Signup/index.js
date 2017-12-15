@@ -45,7 +45,10 @@ export default React.createClass({
       jTitleSuccess:false,
       jFunctionSuccess:false,
       previousMember:false,
-      tandc:false
+      tandcError:false,
+      tandc:false,
+      splitPhoneNumber:false,
+      phoneExtNumber:''
 		};
 	},
 
@@ -59,18 +62,9 @@ export default React.createClass({
 
   },
   normalize(phone) {
-      //normalize string and remove all unnecessary characters
-      phone = phone.replace(/[^\d]/g, "");
-      //check if number length equals to 10
-      //if (phone.length === 10) {
-          //reformat and return phone number
-      this.setState({phoneNumberError:false});
-      return phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-      //}
-      // if(phone.length === 3){
-      //   return phone.replace(/(\d{3})/, "($1)");
-      // }
-      //return phone;
+    phone = phone.replace(/[^\d]/g, "");
+    this.setState({phoneNumberError:false});
+    return phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
   },
   formatPhoneNumber(e){
     let value = e.target.value;
@@ -82,6 +76,9 @@ export default React.createClass({
   },
   onFocus(){
     this.setState({splitName:true});
+  },
+  checkTandC(){
+    this.setState({tandc:!this.state.tandc,tandcError:false});
   },
   antiFocus(e){
     e.preventDefault();
@@ -100,11 +97,46 @@ export default React.createClass({
       noError = 'fullName' + 'Error';
       tempObj[noError] = false;
     }
+    let phoneNumber = '';
+    if(this.state.phoneNumber !== ''){
+      phoneNumber = this.state.phoneNumber;
+      if( this.state.phoneNumber.indexOf('Ext') < 0 ){
+        if(this.state.extNumber !==''){
+          phoneNumber = phoneNumber +' Ext. '+this.state.extNumber;
+        }
+      }
+    }
     this.setState(tempObj);
-    this.setState({splitName:false,fullName:fullName,showMenu:false});
+    this.setState({phoneExtNumber:phoneNumber,splitPhoneNumber:false,splitName:false,fullName:fullName,showMenu:false});
   },
   onBlur(){
     this.setState({splitName:false});
+  },
+  onFocusNumber(){
+    this.setState({splitPhoneNumber:true});
+  },
+  createSplitNumber(){
+    let phoneNumberStyle = {
+      width:'70%'
+    };
+    let extNumberStyle = {
+      width:'30%'
+    };
+    let splitStyle = {
+      display: 'flex'
+    };
+    let fieldStyle = {
+      marginLeft : '66%'
+    };
+
+    return (<div style={splitStyle} className="field col-lg-12"><input onFocus={ this.onFocusNumber } style={phoneNumberStyle} className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneNumber} maxLength="10" onChange={this.formatPhoneNumber} required id="phone"/>
+      <field-label>PHONE NUMBER<sup>*</sup></field-label>
+      <input style={extNumberStyle} className="noErrorField extension" id="extNumber" onFocus={ this.onFocusNumber } type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
+      <field-label style={fieldStyle}>EXT</field-label></div>);
+  },
+  createPhoneNumber(){
+    return (<div className="field col-lg-12"><input onFocus={ this.onFocusNumber } className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneExtNumber} required id="phone"/>
+      <field-label>PHONE NUMBER<sup>*</sup></field-label></div>);
   },
   createName(){
     return (<div className="field col-lg-12">
@@ -311,7 +343,13 @@ export default React.createClass({
     }
   },
   submit(){
-    if(this.state.phoneNumber === ''){
+    if(this.state.tandc){
+      this.setState({tandcError:false});
+    } else {
+      this.setState({tandcError:true});
+    }
+
+    if(this.state.phoneExtNumber === ''){
       this.setState({phoneNumberError:true});
     }else{
       this.setState({phoneNumberError:false});
@@ -370,15 +408,23 @@ export default React.createClass({
 
     let me = {...this.state};
     if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-      if(me.phoneNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+      if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
         return;
       } else {
-        this.props.submit();
+        if(this.state.tandcError){
+          return;
+        }else{
+          this.props.submit();
+        }
       }
     } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
       return;
     } else {
-      this.props.submit();
+      if(this.state.tandcError){
+        return;
+      }else{
+        this.props.submit();
+      }
     }
   },
   selectPrimaryJob(e){
@@ -411,6 +457,8 @@ export default React.createClass({
     let extNumberStyle = {
       width:'30%'
     };
+    let tandCheck = this.state.tandcError ? "form-check-input notChecked" : "form-check-input";
+    let submitEnabled = ( this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
     return (
       <div className="modalBackDrop">
         <div className="form">
@@ -459,12 +507,7 @@ export default React.createClass({
                     {this.createList()}
                   </ul>) : false }
                 </div>
-                <div style={splitStyle} className="field col-lg-12">
-                  <input style={phoneNumberStyle} onFocus={ this.antiFocus } className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneNumber} maxLength="10" onChange={this.formatPhoneNumber} required id="phone"/>
-                  <field-label>PHONE NUMBER<sup>*</sup></field-label>
-                  <input style={extNumberStyle} onFocus={ this.antiFocus } className="noErrorField extension" id="extNumber" type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
-                  <field-label style={fieldStyle}>EXT</field-label>
-                </div>
+                {this.state.splitPhoneNumber ? this.createSplitNumber() : this.createPhoneNumber()}
                 {this.state.previousMember ? <div className="field col-lg-12">
                   <input onFocus={ this.antiFocus } className={this.state.oldMemberError ? "noErrorField errorField" : "noErrorField"} value={this.state.oldMember} id="oldMember" type="text" onChange={this.userInput} required/>
                     {this.state.oldMemberError ? <img className="error" src="assets/png/error.svg"></img> :
@@ -481,13 +524,13 @@ export default React.createClass({
                   </div>
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input className="form-check-input" id="tandc" type="checkbox"/>
-                      I agree to the <a href="javascript:void(0);" onClick={this.OpenTC}>Quartz Network Terms and Conditions<sup>*</sup></a>
+                      <input className= {tandCheck} onClick={this.checkTandC} id="tandc" type="checkbox"/>
+                      I agree to the <a href="javascript:void(0);" onClick={this.OpenTC}>Quartz The Network Terms and Conditions<sup>*</sup></a>
                     </label>
-                  </div>
+                  </div>     
                 </div>
                 <div className="col-lg-12 text-center center-block">
-                  <input className="submitBtn" onClick={this.submit} onChange={()=>{return}} value="SUBMIT APPLICATION"/>
+                  <input className={submitEnabled} onClick={this.submit} onChange={()=>{return}} value="SUBMIT APPLICATION"/>
                 </div>
                 <div className="col-lg-12">
                   <center>
