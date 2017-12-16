@@ -461,7 +461,7 @@ export default React.createClass({
     let tandCheck = this.state.tandcError ? "form-check-input notChecked" : "form-check-input";
     let submitEnabled = ( this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
     return (
-      <div className="modalBackDrop">
+      <div className="modalBackDrop" onClick={this.props.close}>
         <div className="form">
           <div className="formWrapper">
             <div className="closeBtn"><img className="closeImg" onClick={this.props.close}src="assets/png/close.png"></img></div>
