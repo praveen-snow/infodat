@@ -68,6 +68,7 @@
     "react-redux": "^5.0.3",
     "react-select": "^1.1.0",
     "react-shallow-testutils": "^2.0.0",
+    "react-stripe-elements": "^1.2.1",
     "react-toolbox": "^2.0.0-beta.7",
     "react-unit": "^2.0.1",
     "redux": "^3.6.0",

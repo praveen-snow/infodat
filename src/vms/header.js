@@ -6,13 +6,13 @@ const headerSC = function(store) {
     const Header = require("components/Header");
     return (
         <Header
-          navSignUpForm={()=>{
-            store.dispatch({type:'NAV_PUSH_BASE', payload: {
-                current: {
-                    signup:  true,
-                }
-            }});
-    			}}
+            navSignUpForm={()=>{
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
+                    current: {
+                        signup:  true,
+                    }
+                }});
+            }}
         />
     );
 }

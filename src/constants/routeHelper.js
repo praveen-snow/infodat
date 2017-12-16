@@ -2,7 +2,19 @@
 export function baseRoute() {
     return [
         {
-            backdrop:   true,
+            profilePicturePage:   true
+        },
+        {
+            personalInfoPage:  true
+        },
+        {
+            companyInfoPage:  true
+        },
+        {
+            areasIntrestPage:  true
+        },
+        {
+            thankYouPage: true
         }
     ];
 }

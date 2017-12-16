@@ -24,8 +24,7 @@
 
 	.form {
 		width: 60%;
-		top: 1%;
-		height: auto;
+		top: 5%;
 		margin: auto;
 		position: relative;
 		display: -ms-flexbox;
@@ -37,9 +36,12 @@
 		background-clip: padding-box;
 		border: 1px solid rgba(0,0,0,.2);
 		outline: 0;
-
 		li {
 			padding: 8px;
+		}
+		.content{
+			max-height: 82vh;
+    		overflow: auto;
 		}
 
 		.dropDownList {

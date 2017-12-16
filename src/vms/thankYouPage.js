@@ -1,17 +1,17 @@
 import React from 'react';
 
-const AccountActivationSC = function(store) {
+const ThankYouPageSC = function(store) {
     //Components
-    const ActivationAccount = require("components/ActivationAccount");
+    const ThankYouPage = require("components/ThankYou");
     return (
-		<ActivationAccount
-            paymentPage={()=>{
+		<ThankYouPage
+            goToViewProfilePage={()=>{
                 store.dispatch({
                     type: 'NAV_SET_ROUTE_STACK_BASE',
                     payload: {
                         history: [],
                         current: {
-                            paymentPage: true
+                            viewProfilePage: true
                         }
                     }
                 });
@@ -21,4 +21,4 @@ const AccountActivationSC = function(store) {
 
 }
 //
-export default AccountActivationSC;
+export default ThankYouPageSC;

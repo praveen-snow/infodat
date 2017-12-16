@@ -1,0 +1,72 @@
+@import "../../styles/_common";
+.QRZT_BasicModal {
+    background-color: #5b5b5f;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100vw;
+    height: 86vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    transform: translate3d(0, 0, 20px);
+    font-family: 'Avenir', sans-serif;
+    color: #fff;
+    /* Fix for iOS & Safari */
+    
+    .ModalWrap {
+        position: relative;
+        width: 70%;
+        height: 55vh;
+        background: #5b5b5f;
+        @include respond(medium) {
+            width: 60%;
+        }
+        @include respond(small) {
+            border-radius: 0;
+            box-shadow: none;
+            width: 100%;
+        }
+        .heading{
+            font-size: 32px !important;
+            font-weight: 100;
+        }   
+        .MainContent {
+            width: 540px;
+            margin: auto;
+           
+            p {
+                font-family: 'Avenir', sans-serif;
+                display: block;
+                font-size: 17px;
+                text-align: center;
+                margin: auto;
+                padding: 30px;
+                padding-top: 0px;
+                @include respond(small) {
+                    margin-left: 5em;
+                }
+            }
+        }
+        .getStarted{
+            background-color: rgba(0,161,255,.83);
+            color: #fff;
+            width: 260px;
+            font-size: 18px;
+            height: 58px;
+            border-radius: 4px;
+        }
+        .skip{
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .uploadText{
+            font-size: 10px;
+            font-style: italic;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+    }
+}

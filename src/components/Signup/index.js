@@ -406,26 +406,27 @@ export default React.createClass({
       }
     }
 
-    let me = {...this.state};
-    if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-      if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
-        return;
-      } else {
-        if(this.state.tandcError){
-          return;
-        }else{
-          this.props.submit();
-        }
-      }
-    } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
-      return;
-    } else {
-      if(this.state.tandcError){
-        return;
-      }else{
-        this.props.submit();
-      }
-    }
+    // let me = {...this.state};
+    // if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
+    //   if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+    //     return;
+    //   } else {
+    //     if(this.state.tandcError){
+    //       return;
+    //     }else{
+    //       this.props.submit();
+    //     }
+    //   }
+    // } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
+    //   return;
+    // } else {
+    //   if(this.state.tandcError){
+    //     return;
+    //   }else{
+    //     this.props.submit();
+    //   }
+    // }
+    this.props.submit();
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;
