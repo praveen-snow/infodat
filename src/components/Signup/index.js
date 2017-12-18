@@ -347,19 +347,19 @@ export default React.createClass({
           tempObj[success] = false;
         }
       }
-      if(key === 'phoneNumber'){
-        if(refsValue.length !== 0 ){
-          success = key + 'Success';
-          tempObj[success] = true;
-          noError = key + 'Error';
-          tempObj[noError] = false;
-        } else {
-          noError = key + 'Error';
-          tempObj[noError] = true;
-          success = key + 'Success';
-          tempObj[success] = false;
-        }
-      }
+      // if(key === 'phoneNumber'){
+      //   if(refsValue.length !== 0 ){
+      //     success = key + 'Success';
+      //     tempObj[success] = true;
+      //     noError = key + 'Error';
+      //     tempObj[noError] = false;
+      //   } else {
+      //     noError = key + 'Error';
+      //     tempObj[noError] = true;
+      //     success = key + 'Success';
+      //     tempObj[success] = false;
+      //   }
+      // }
       tempObj[key] = refsValue;
       this.setState(tempObj);
     } else {
