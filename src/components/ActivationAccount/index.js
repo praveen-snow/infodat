@@ -100,7 +100,7 @@ return (
               <div className="field col-lg-12">
                   <div className="form-check">
                     <label className="form-check-label">
-                    <input type={typePassword} className={this.state.passwordError ? "noErrorField errorField" : "noErrorField"} value={this.state.passWord} onChange={this.userPassword} required/>
+                    <input onFocus={()=>{this.setState({showMenu:false})}} type={typePassword} className={this.state.passwordError ? "noErrorField errorField" : "noErrorField"} value={this.state.passWord} onChange={this.userPassword} required/>
                     <span className="passwordShow" onClick={this.showPassword}>{passWordToggle}</span>
                     {this.state.passwordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                     {this.state.passwordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
@@ -112,7 +112,7 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                        <input  className={this.state.confirmPasswordError ? "noErrorField errorField" : "noErrorField"} value={this.state.confirmPassword} type={typePassword} onChange={this.confirmPassword} required/>
+                        <input  onFocus={()=>{this.setState({showMenu:false})}} className={this.state.confirmPasswordError ? "noErrorField errorField" : "noErrorField"} value={this.state.confirmPassword} type={typePassword} onChange={this.confirmPassword} required/>
                         {this.state.confirmPasswordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                         {this.state.confirmPasswordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                         <field-label>CONFIRM PASSWORD</field-label>
@@ -122,7 +122,7 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                            <input  className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
+                            <input  className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} onChange={this.dummy} required/>
                             <span className="fa fa-caret-down downArrow"></span>
                             <field-label>SECURITY QUESTION</field-label>
                             { this.state.showMenu ? (<ul className="dropDownList">
@@ -145,7 +145,7 @@ return (
                   {this.state.secQuestion !== ''? <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                        <input  className={this.state.secAnswerError ? "noErrorField errorField" : "noErrorField"} value={this.state.secAnswer} type="text" onChange={this.secAnswer} required/>
+                        <input  className={this.state.secAnswerError ? "noErrorField errorField" : "noErrorField"} value={this.state.secAnswer} type="text" onChange={this.secAnswer} onFocus={()=>{this.setState({showMenu:false})}} required/>
                         {this.state.secAnswerError ? <img className="error" src="assets/png/error.svg"></img> : false}
                         {this.state.secAnswerSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                         <field-label>ANSWER</field-label>
@@ -154,7 +154,7 @@ return (
                   </div>:false}
                   <center>
                     <div className="col-lg-12 text-center center-block">
-                        <input  className={submitEnabled} onClick={this.submit} value="SUBMIT"/>
+                        <input  className={submitEnabled} onChange={this.dummy} onClick={this.submit} value="SUBMIT"/>
                     </div>
                   </center>
             </div>

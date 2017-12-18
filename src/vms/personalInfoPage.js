@@ -8,7 +8,7 @@ const PersonalInfoSC = function(store) {
             goToCompanyInfoPage={()=>{
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
-                        thankYouPage: true
+                        companyInfoPage: true
                     }
                 }});
             }}

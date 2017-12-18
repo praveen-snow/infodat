@@ -5,6 +5,7 @@ const AccountActivationSC = function(store) {
     const ActivationAccount = require("components/ActivationAccount");
     return (
 		<ActivationAccount
+            workEmail={"praveen.chundi@infodatinc.com"}
             paymentPage={()=>{
                 store.dispatch({
                     type: 'NAV_SET_ROUTE_STACK_BASE',

@@ -1,11 +1,13 @@
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'Avenir-Light';
   font-style: normal;
   font-weight: 300;
-  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+  src: local('Avenir-Light'), 
+  local('Avenir-Light'), 
+  url(fonts/Avenir-Light.ttf) format('ttf');
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
@@ -26,6 +28,13 @@
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+} */
+
 * {
   box-sizing: border-box;
 }
@@ -35,7 +44,7 @@ html {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
 }
 
 body {
@@ -45,15 +54,14 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   font-size: 87.5%;
   line-height: normal;
   color: #333;
-  text-size-adjust: 100%;
 }
 
 button {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   outline: none;
   border: 0;
   box-shadow: none;
@@ -64,16 +72,20 @@ button {
 }
 
 label {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir Light', sans-serif, Arial;
+}
+
+p {
+  font-family: 'Avenir Light', sans-serif, Arial;
 }
 
 div {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   user-select: none;
 }
 
 input {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   border: none;
   margin: 0;
   outline: none;
@@ -84,18 +96,18 @@ input::-ms-clear {
 }
 
 table {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 td, th {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   padding: 0;
 }
 
 .Wrap {
-  font-family: 'Avenir', sans-serif, Arial;
+  font-family: 'Avenir-Light', sans-serif, Arial;
   width: 100%;
   height: 100%;
   position: absolute;

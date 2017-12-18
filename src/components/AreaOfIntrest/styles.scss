@@ -1,0 +1,45 @@
+@import "../../styles/_common";
+.field{
+    padding: 0;
+}
+field-label{
+    left: 2.5%;
+}
+.noErrorField{
+    padding-left: 2.5%;
+}
+h3{
+    font-size: 24px;
+}
+.AllCateGory {
+    max-height: 570px;
+    height: 550px;
+    .wrapper{
+        height: 535px;
+        overflow: auto;
+        width: 100%;
+    }
+    .cateGory {
+        height: auto;
+        .flexFlow {
+            width: 100%;
+            float: left;
+        }
+        .subWrapper{
+            widows: 100%;
+            .subCategory {
+                height: 120px;
+                width: 229px;
+                background: #fff;
+                margin-right: 10px;
+                float: left;
+                margin-bottom: 10px;
+                color: #000;
+                text-align: center;
+                padding: 5%;
+            }
+        }
+    }
+    
+}
+

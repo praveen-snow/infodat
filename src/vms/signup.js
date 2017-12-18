@@ -23,11 +23,11 @@ const signupVM = function(store) {
           }
         }
       });
-    }} OpenTC={() => {
+    }} OpenTC={(id) => {
       store.dispatch({
         type: "NAV_SET_MODAL_BASE",
         payload: {
-          modal: (<TandC mainTxt={"React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs. React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs. React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs.React makes it painless to create interactive UIs."}
+          modal: (<TandC id = {id} mainTxt={"React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs. React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs. React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render  just the right components when your data changes. Build encapsulated components that manage their own state, then compose them to make complex UIs.React makes it painless to create interactive UIs."}
           close={() => {
               closeModal('vms/signup')
             }}/>

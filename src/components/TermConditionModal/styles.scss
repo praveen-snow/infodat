@@ -14,25 +14,15 @@
   z-index: 15;
   transform: translate3d(0, 0, 20px);
   /* Fix for iOS & Safari */
-  .MainContent {
-    p {
-      display: block;
-      font-size: 19px;
-      text-align: justify;
-      margin: auto;
-      padding: 30px;
-      @include respond(small) {
-        margin-left: 5em;
-      }
-    }
-  }
+  
 
   .ModalWrap {
     position: relative;
     width: 50%;
-    height: 500px;
     box-shadow: 0 0 5px 0;
     background: #f4f5f5;
+    z-index: 9999;
+    bottom: 10%;
     @include respond(medium) {
       width: 60%;
     }
@@ -40,6 +30,51 @@
       border-radius: 0;
       box-shadow: none;
       width: 100%;
+    }
+    .form-check{
+      display: inline-block;
+      padding: 1%;
+      .form-check-label{
+        color: rgba(51,123,246,.59);
+        font-size: 13px;
+      }
+      .form-check-input{
+        margin-top: 2px;
+      }
+    }
+
+    .MainContent {
+      .overRide{
+        padding-left: 200px;
+      }
+      h1{
+        font-size: 18pt;
+        padding: 25px;
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+      p {
+        display: block;
+        font-size: 12pt;
+        text-align: justify;
+        margin: auto;
+        padding: 30px;
+        padding-top: 0;
+        @include respond(small) {
+          margin-left: 5em;
+        }
+      }
+    }
+    .closeBtn {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 3%;
+      padding-bottom: 0;
+      .closeImg {
+        width: 20pt;
+        height: 20pt;
+      }
     }
   }
 }

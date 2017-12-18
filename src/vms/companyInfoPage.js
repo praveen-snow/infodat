@@ -1,21 +1,25 @@
 import React from 'react';
 
-const PaymentPageSC = function(store) {
+const CompanyInfoPageSC = function(store) {
     //Components
-    const PaymentPage = require("components/PaymentPage");
+    const CompanyInfoPage = require("components/CompanyInfo");
     return (
-		<PaymentPage
+		<CompanyInfoPage
             workEmail={"praveen.chundi@infodatinc.com"}
             goToAreaIntrestInfoPage={()=>{
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
-                        personalInfoPage:  true,
+                        areasIntrestPage:  true,
                     }
                 }});
+            }}
+            companyName={"Quartz Events"}
+            goBack={()=>{
+                store.dispatch({type:'NAV_POP_BASE'});
             }}
         />
 	);
 
 }
 //
-export default PaymentPageSC;
+export default CompanyInfoPageSC;

@@ -115,6 +115,10 @@ export default React.createClass({
   onFocusNumber(){
     this.setState({splitPhoneNumber:true});
   },
+  onBlurControl(e){
+    this.setState({splitPhoneNumber:false});
+    this.antiFocus(e);
+  },
   createSplitNumber(){
     let phoneNumberStyle = {
       width:'70%'
@@ -131,7 +135,7 @@ export default React.createClass({
 
     return (<div style={splitStyle} className="field col-lg-12"><input onFocus={ this.onFocusNumber } style={phoneNumberStyle} className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneNumber} maxLength="10" onChange={this.formatPhoneNumber} required id="phone"/>
       <field-label>PHONE NUMBER<sup>*</sup></field-label>
-      <input style={extNumberStyle} className="noErrorField extension" id="extNumber" onFocus={ this.onFocusNumber } type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
+      <input style={extNumberStyle} className="noErrorField extension" id="extNumber" onBlur={ this.onBlurControl } onFocus={ this.onFocusNumber } type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
       <field-label style={fieldStyle}>EXT</field-label></div>);
   },
   createPhoneNumber(){
@@ -157,12 +161,13 @@ export default React.createClass({
     return (<div style={splitStyle} className="field col-lg-12">
       <input id="fName" value={this.state.fName} className="noErrorField" type="text" onFocus={ this.onFocus } onChange={this.userInput} required/>
       <field-label >FIRST NAME<sup>*</sup></field-label>
-      <input value={this.state.lName} id="lName" className="noErrorField" type="text" onFocus={ this.onFocus } onChange={this.userInput} required/>
+      <input value={this.state.lName} id="lName" className="noErrorField" type="text" onFocus={ this.onFocus } onBlur={this.antiFocus} onChange={this.userInput} required/>
       <field-label style={fieldStyle} >LAST NAME<sup>*</sup></field-label>
       </div>);
   },
-  OpenTC(){
-    this.props.OpenTC();
+  OpenTC(e){
+    let id = e.target.id;
+    this.props.OpenTC(id);
   },
   showMenu(){
     this.setState({showMenu:!this.state.showMenu});
@@ -214,6 +219,9 @@ export default React.createClass({
 
     if(refsValue){
       if(key === 'wEmail'){
+        if(refsValue.length > 120){
+          return;
+        }
         if(emailRegex.test(refsValue)){
           success = key + 'Success';
           tempObj[success] = true;
@@ -227,6 +235,9 @@ export default React.createClass({
         }
       }
       if(key === 'fName'){
+        if(refsValue.length > 30){
+          return;
+        }
         if(refsValue.length > 2){
           success = 'fName' + 'Success';
           tempObj[success] = true;
@@ -243,6 +254,9 @@ export default React.createClass({
         }
       }
       if(key === 'lName'){
+        if(refsValue.length > 30){
+          return;
+        }
         if(refsValue.length > 2){
           success = 'lName' + 'Success';
           tempObj[success] = true;
@@ -259,14 +273,19 @@ export default React.createClass({
         }
       }
       if(key === 'invitationNumber'){
-        if(refsValue.length >= 2 && refsValue.length <= 16 ){
+        if(refsValue.length === 0){
+          noError = key + 'Error';
+          tempObj[noError] = false;
+          success = key + 'Success';
+          tempObj[success] = false;
+        } else if(refsValue.length >= 2  && refsValue.length <= 16 ){
           success = key + 'Success';
           tempObj[success] = true;
           noError = key + 'Error';
           tempObj[noError] = false;
         } else if(refsValue.length > 16){
           return;
-        } else {
+        }  else {
           noError = key + 'Error';
           tempObj[noError] = true;
           success = key + 'Success';
@@ -274,6 +293,9 @@ export default React.createClass({
         }
       }
       if(key === 'company'){
+        if(refsValue.length > 120){
+          return;
+        }
         if(refsValue.length !== 0 ){
           success = key + 'Success';
           tempObj[success] = true;
@@ -287,6 +309,9 @@ export default React.createClass({
         }
       }
       if(key === 'jTitle'){
+        if(refsValue.length > 120){
+          return;
+        }
         if(refsValue.length !== 0 ){
           success = key + 'Success';
           tempObj[success] = true;
@@ -338,6 +363,20 @@ export default React.createClass({
       tempObj[key] = refsValue;
       this.setState(tempObj);
     } else {
+      if(key === 'invitationNumber'){
+        noError = key + 'Error';
+        tempObj[noError] = false;
+        success = key + 'Success';
+        tempObj[success] = false;
+      }
+      if(key === 'wEmail'){
+        if(!emailRegex.test(refsValue)){
+          success = key + 'Success';
+          tempObj[success] = false;
+          noError = key + 'Error';
+          tempObj[noError] = true;
+        }
+      }
       tempObj[key] = refsValue;
       this.setState(tempObj);
     }
@@ -406,27 +445,35 @@ export default React.createClass({
       }
     }
 
-    // let me = {...this.state};
-    // if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-    //   if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
-    //     return;
-    //   } else {
-    //     if(this.state.tandcError){
-    //       return;
-    //     }else{
-    //       this.props.submit();
-    //     }
-    //   }
-    // } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
-    //   return;
-    // } else {
-    //   if(this.state.tandcError){
-    //     return;
-    //   }else{
-    //     this.props.submit();
-    //   }
-    // }
-    this.props.submit();
+    let me = {...this.state};
+    if(!me.tandc){
+      return;
+    }
+    if(this.state.previousMember){
+      if(this.state.oldMember === ''){
+        return;
+      }
+    }
+    if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
+      if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+        return;
+      } else {
+        if(this.state.tandcError){
+          return;
+        }else{
+          this.props.submit();
+        }
+      }
+    } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
+      return;
+    } else {
+      if(this.state.tandcError){
+        return;
+      }else{
+        this.props.submit();
+      }
+    }
+    //this.props.submit();
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;
@@ -460,8 +507,10 @@ export default React.createClass({
     };
     let tandCheck = this.state.tandcError ? "form-check-input notChecked" : "form-check-input";
     let submitEnabled = ( this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
+    submitEnabled = (this.state.previousMember && this.state.oldMember.length === 0) ? 'submitBtn DisableBtn' : submitEnabled;
     return (
-      <div className="modalBackDrop" onClick={this.props.close}>
+      <div className="modalBackDrop">
+      <div className="ClickLayer" onClick={this.props.close}></div>
         <div className="form">
           <div className="formWrapper">
             <div className="closeBtn"><img className="closeImg" onClick={this.props.close}src="assets/png/close.png"></img></div>
@@ -502,7 +551,7 @@ export default React.createClass({
                 </div>
                 <div className= "field col-lg-12">
                   <input onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={this.userInput} required/>
-                  <span className="fa fa-caret-down downArrow"></span>
+                  <span onClick={this.showMenu} className="fa fa-caret-down downArrow"></span>
                   <field-label>PRIMARY JOB FUNCTION<sup>*</sup></field-label>
                   { this.state.showMenu ? (<ul className="dropDownList">
                     {this.createList()}
@@ -526,17 +575,17 @@ export default React.createClass({
                   <div className="form-check">
                     <label className="form-check-label">
                       <input className= {tandCheck} onClick={this.checkTandC} id="tandc" type="checkbox"/>
-                      I agree to the <a href="javascript:void(0);" onClick={this.OpenTC}>Quartz The Network Terms and Conditions<sup>*</sup></a>
+                      I agree to the <a href="javascript:void(0);" id="agree" onClick={this.OpenTC}>Quartz The Network Terms and Conditions<sup>*</sup></a>
                     </label>
                   </div>     
                 </div>
                 <div className="col-lg-12 text-center center-block">
                   <input className={submitEnabled} onClick={this.submit} onChange={()=>{return}} value="SUBMIT APPLICATION"/>
                 </div>
-                <div className="col-lg-12">
-                  <center>
-                    <div className="sign-in">
-                      Already a member? <a href="javascript:void(0);">Sign in</a>
+                <div id="SignIn" onClick={this.OpenTC} className="col-lg-12">
+                  <center id="SignIn">
+                    <div id="SignIn" className="sign-in">
+                      Already a member? <a id="SignIn" href="javascript:void(0);">Sign in</a>
                     </div>
                   </center>
                 </div>

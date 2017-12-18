@@ -1,10 +1,10 @@
 import React from 'react';
 
-const PaymentPageSC = function(store) {
+const AreaOfIntrestPageSC = function(store) {
     //Components
-    const PaymentPage = require("components/PaymentPage");
+    const AreaOfIntrestPage = require("components/AreaOfIntrest");
     return (
-		<PaymentPage
+		<AreaOfIntrestPage
             goToThankYouPage={()=>{
                 store.dispatch({
                     type: 'NAV_SET_ROUTE_STACK_BASE',
@@ -16,9 +16,12 @@ const PaymentPageSC = function(store) {
                     }
                 });
             }}
+            goBack={()=>{
+                store.dispatch({type:'NAV_POP_BASE'});
+            }}
         />
 	);
 
 }
 //
-export default PaymentPageSC;
+export default AreaOfIntrestPageSC;

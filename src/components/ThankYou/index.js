@@ -16,7 +16,8 @@ componentWillUnmount() {
     ss.unuse();
 },
 getStarted(){
-    this.props.getStarted();
+    console.log("View Profile");
+    //this.props.getStarted();
 },
   
 render() {

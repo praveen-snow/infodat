@@ -12,7 +12,7 @@
     align-items: center;
     z-index: 15;
     transform: translate3d(0, 0, 20px);
-    font-family: 'Avenir', sans-serif;
+    font-family: 'Avenir-Light', sans-serif;
     color: #fff;
     /* Fix for iOS & Safari */
     
@@ -37,7 +37,7 @@
             width: 597px;
             margin: auto;
             p {
-                font-family: 'Avenir', sans-serif;
+                font-family: 'Avenir-Light', sans-serif;
                 display: block;
                 font-size: 17px;
                 text-align: center;
@@ -50,7 +50,7 @@
             }
         }
         .getStarted{
-            background-color: rgba(0,161,255,.83);
+            background-color: #0091f8;
             color: #fff;
             width: 260px;
             font-size: 18px;

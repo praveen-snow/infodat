@@ -7,6 +7,7 @@ export default React.createClass({
 mixins: [PureRenderMixin],
 getInitialState() {
     return {
+        mouserHover:false
     }
 },
 componentWillMount() {
@@ -21,6 +22,7 @@ goToPersonalInfoPage(){
   
 render() {
     let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswerSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
+    let nextClass = this.state.mouserHover ? "getStarted next DisableBtn" : "getStarted next";
     return (
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
@@ -39,8 +41,15 @@ render() {
                     <div className="nonEditable value">Procurement</div>
                 </section>
                 <center>
-                    <button className="getStarted" onClick={this.props.goBack}>PREVIOUS</button>
-                    <button className="getStarted" onClick={this.props.goToCompanyInfoPage}>NEXT</button>
+                    <button className="getStarted previous" 
+                    onMouseOver={()=>{
+                        this.setState({mouserHover:true});
+                    }}
+                    onMouseOut={()=>{
+                        this.setState({mouserHover:false});
+                    }}
+                    onClick={this.props.goBack}>PREVIOUS</button>
+                    <button className={nextClass} onClick={this.props.goToCompanyInfoPage}>NEXT</button>
                 </center>
                 <center>
                     <label className="skip" onClick={this.props.goToCompanyInfoPage} >Skip this step</label>

@@ -34,7 +34,7 @@ render() {
                     <button className="getStarted" onClick={this.getStarted}>GET STARTED</button>
                 </center>
                 <center>
-                    <label className="skip">Skip the step</label>
+                    <label className="skip">Skip the steps</label>
                 </center>
             </div>
         </div>
