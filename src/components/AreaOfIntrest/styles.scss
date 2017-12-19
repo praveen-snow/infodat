@@ -14,14 +14,27 @@ h3{
 .next {
     margin-left: 25px;
 }
+.cateGory {
+    height: auto;
+    float: left;
+    width: auto;
+    height: 7vh;
+    padding: 10px;
+    padding-top: 14px;
+}
+.cateGory:hover{
+    background: #000000;
+}
 .AllCateGory {
-    max-height: 43vh;
+    max-height: auto;
     .wrapper{
-        height: 42vh;
+        height: auto;
         overflow: auto;
         width: 100%;
+        padding-top: 1%;
+        padding-bottom: 1%;
     }
-    .cateGory {
+    .subCateGory {
         height: auto;
         .flexFlow {
             width: 100%;
