@@ -234,11 +234,27 @@ export default React.createClass({
           tempObj[success] = false;
         }
       }
+      if(key === 'oldMember'){
+        if(refsValue.length > 120){
+          return;
+        }
+        if(emailRegex.test(refsValue)){
+          success = key + 'Success';
+          tempObj[success] = true;
+          noError = key + 'Error';
+          tempObj[noError] = false;
+        } else {
+          noError = key + 'Error';
+          tempObj[noError] = true;
+          success = key + 'Success';
+          tempObj[success] = false;
+        }
+      }
       if(key === 'fName'){
         if(refsValue.length > 30){
           return;
         }
-        if(refsValue.length > 2){
+        if(refsValue.length >= 2){
           success = 'fName' + 'Success';
           tempObj[success] = true;
           noError = 'fName' + 'Error';
@@ -257,7 +273,7 @@ export default React.createClass({
         if(refsValue.length > 30){
           return;
         }
-        if(refsValue.length > 2){
+        if(refsValue.length >= 2){
           success = 'lName' + 'Success';
           tempObj[success] = true;
           noError = 'lName' + 'Error';
@@ -278,7 +294,7 @@ export default React.createClass({
           tempObj[noError] = false;
           success = key + 'Success';
           tempObj[success] = false;
-        } else if(refsValue.length >= 2  && refsValue.length <= 16 ){
+        } else if(refsValue.length <= 16 ){
           success = key + 'Success';
           tempObj[success] = true;
           noError = key + 'Error';
@@ -347,19 +363,6 @@ export default React.createClass({
           tempObj[success] = false;
         }
       }
-      // if(key === 'phoneNumber'){
-      //   if(refsValue.length !== 0 ){
-      //     success = key + 'Success';
-      //     tempObj[success] = true;
-      //     noError = key + 'Error';
-      //     tempObj[noError] = false;
-      //   } else {
-      //     noError = key + 'Error';
-      //     tempObj[noError] = true;
-      //     success = key + 'Success';
-      //     tempObj[success] = false;
-      //   }
-      // }
       tempObj[key] = refsValue;
       this.setState(tempObj);
     } else {
@@ -377,11 +380,20 @@ export default React.createClass({
           tempObj[noError] = true;
         }
       }
+      if(key === 'oldMember'){
+        if(!emailRegex.test(refsValue)){
+          success = key + 'Success';
+          tempObj[success] = false;
+          noError = key + 'Error';
+          tempObj[noError] = true;
+        }
+      }
       tempObj[key] = refsValue;
       this.setState(tempObj);
     }
   },
   submit(){
+    let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if(this.state.tandc){
       this.setState({tandcError:false});
     } else {
@@ -411,7 +423,6 @@ export default React.createClass({
     if(this.state.wEmail === ''){
       this.setState({wEmailError:true});
     }else{
-      let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
       if(emailRegex.test(this.state.wEmail)){
         this.setState({wEmailError:false});
       }else{
@@ -441,11 +452,16 @@ export default React.createClass({
       if(this.state.oldMember === ''){
         this.setState({oldMemberError:true});
       }else{
-        this.setState({oldMemberError:false});
+        if(emailRegex.test(this.state.oldMember)){
+          this.setState({oldMemberError:false});
+        }else{
+          this.setState({oldMemberError:true});
+        }
       }
     }
 
     let me = {...this.state};
+    let userDetailsObj = {};
     if(!me.tandc){
       return;
     }
@@ -461,6 +477,14 @@ export default React.createClass({
         if(this.state.tandcError){
           return;
         }else{
+          userDetailsObj.invitationNumber = me.invitationNumber,
+          userDetailsObj.userName = me.fullName;
+          userDetailsObj.workEmail = me.wEmail;
+          userDetailsObj.company = me.company;
+          userDetailsObj.jobTitle = me.jTitle;
+          userDetailsObj.jobFunction = me.jFunction;
+          userDetailsObj.phoneNumber = me.phoneExtNumber;
+          userDetailsObj.oldEmail = me.oldMember;
           this.props.submit();
         }
       }
@@ -470,10 +494,21 @@ export default React.createClass({
       if(this.state.tandcError){
         return;
       }else{
+        userDetailsObj.invitationNumber = me.invitationNumber,
+        userDetailsObj.userName = me.fullName;
+        userDetailsObj.workEmail = me.wEmail;
+        userDetailsObj.company = me.company;
+        userDetailsObj.jobTitle = me.jTitle;
+        userDetailsObj.jobFunction = me.jFunction;
+        userDetailsObj.phoneNumber = me.phoneExtNumber;
+        userDetailsObj.oldEmail = me.oldMember;
         this.props.submit();
       }
     }
-    //this.props.submit();
+    
+    
+    //this.props.submit(userDetailsObj);
+    
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;
@@ -525,7 +560,7 @@ export default React.createClass({
                     {this.state.invitationNumberError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.invitationNumberSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
-                  <field-label>INVITATION NUMBER</field-label>
+                  <field-label>INVITATION CODE</field-label>
                 </div>
                 { this.state.splitName ? this.createSplitNames() : this.createName() }
                 <div className="field col-lg-12">
@@ -563,7 +598,7 @@ export default React.createClass({
                     {this.state.oldMemberError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.oldMemberSuccess?<img className="success" src="assets/png/success.svg"></img> : false}
-                  <field-label>Member ID<sup>*</sup></field-label>
+                  <field-label>PREVIOUS WORK EMAIL<sup>*</sup></field-label>
                 </div> : false}
                 <div className="field col-lg-12">
                   <div className="form-check">

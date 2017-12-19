@@ -59,8 +59,9 @@ createOptions(fontSize){
 render() {
     let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswerSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
     return (
-        <div className="QRZT_BasicModal" onClick={this.props.close}>
+        <div className="QRZT_BasicModal">
             <div className="ModalWrap">
+                <div className="closeBtn"><img className="closeImg" onClick={this.props.close}src="assets/png/close.png"></img></div>
                 <center>
                     <h2>Payment Information</h2>
                 </center>

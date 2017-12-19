@@ -13,7 +13,8 @@ const signupVM = function(store) {
       }
     });
   }
-  return (<Signup close={() => {
+  return (<Signup 
+    close={() => {
       store.dispatch({
         type: 'NAV_SET_ROUTE_STACK_BASE',
         payload: {
@@ -23,7 +24,8 @@ const signupVM = function(store) {
           }
         }
       });
-    }} OpenTC={(id) => {
+    }} 
+    OpenTC={(id) => {
       store.dispatch({
         type: "NAV_SET_MODAL_BASE",
         payload: {
@@ -35,13 +37,21 @@ const signupVM = function(store) {
         }
       });
     }}
-    submit={()=>{
+    submit={(userDetailsObj)=>{
+      store.dispatch({
+        type: 'SAVE_USER_INFO',
+        payload: {
+          userDetails:userDetailsObj
+        }
+      });
+
+
       store.dispatch({
         type: 'NAV_SET_ROUTE_STACK_BASE',
         payload: {
           history: [],
           current: {
-            activateAcount: true
+            pendingApprovalPage: true
           }
         }
       });

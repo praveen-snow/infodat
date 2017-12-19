@@ -14,13 +14,11 @@
   z-index: 15;
   transform: translate3d(0, 0, 20px);
   /* Fix for iOS & Safari */
-  
-
   .ModalWrap {
     position: relative;
     width: 50%;
     box-shadow: 0 0 5px 0;
-    background: #f4f5f5;
+    background: #ffffff;
     z-index: 9999;
     bottom: 10%;
     @include respond(medium) {
@@ -30,6 +28,20 @@
       border-radius: 0;
       box-shadow: none;
       width: 100%;
+    }
+    .Heading{
+      font-size: 26px;
+    }
+    .editAbles{
+      width: 100%;
+      display: block;
+      .rangeslider-horizontal {
+        height: 2px;
+      }
+      .rangeslider-horizontal .rangeslider__fill {
+        height: 100%;
+        background-color: #333;
+      }
     }
     .form-check{
       display: inline-block;
@@ -47,7 +59,8 @@
       margin-bottom: 10px;
     }
     .MainContent {
-      padding: 5%;
+      padding: 2%;
+      padding-top: 0;
       h1{
         font-size: 18pt;
         padding: 25px;

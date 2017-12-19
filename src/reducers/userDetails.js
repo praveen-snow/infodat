@@ -1,15 +1,15 @@
 import { createReducer, makeId } from 'utils';
 
-const THANK_YOU_MESSAGE = 'THANK_YOU_MESSAGE';
+const SAVE_USER_INFO = 'SAVE_USER_INFO';
 
 const initialState = {
-  thankMessage :null
+  userDetails :{}
 };
 
 export default createReducer(initialState, {
-  [THANK_YOU_MESSAGE]: (state, action) => {
+  [SAVE_USER_INFO]: (state, action) => {
       const r = {...state};
-      r.thankMessage = action.thankMessage;
+      r.userDetails = action.userDetails;
       return r;
   },
 });

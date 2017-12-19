@@ -31,12 +31,27 @@ showMenu(){
     this.setState({showMenu:!this.state.showMenu});
 },
 userPassword(e){
- let value = e.target.value;
- this.setState({passWord:value,passwordError:false});
+    let value = e.target.value;
+    var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
+    if(value.length > 16){
+        this.setState({passwordSuccess:false,passwordError:true});
+    }
+    if(mediumRegex.test(value)){
+        this.setState({passwordError:false,passwordSuccess:true});
+    } else {
+        this.setState({passwordSuccess:false,passwordError:true});
+    }
+    this.setState({passWord:value});
+
 },
 confirmPassword(e){
     let value = e.target.value;
-    this.setState({confirmPassword:value,confirmPasswordError:false});
+    if(this.state.passWord === value){
+        this.setState({confirmPasswordError:false,confirmPasswordSuccess:true});
+    } else {
+        this.setState({confirmPasswordError:true,confirmPasswordSuccess:false});
+    }
+    this.setState({confirmPassword:value});
 },
 selectSecQuestion(e){
     let value = e.currentTarget.dataset.id;
@@ -48,34 +63,42 @@ secAnswer(e){
 },
 submit(){
     let me = this.state;
-    // if(me.passWord === ''){
-    //     this.setState({passwordError:true});
-    // }
-    // if(me.confirmPassword === ''){
-    //     this.setState({confirmPasswordError:true});
-    // }
-    // if(me.secQuestion === ''){
-    //     this.setState({secQuestionError:true});
-    // }
-    // if(me.secAnswer === ''){
-    //     this.setState({secAnswerError:true});
-    // }
-    // if(me.passWord === '' && me.confirmPassword === '' && me.secAnswer === '' && me.secQuestion === ''){
-    //     return;
-    // }else{
+    if(me.passWord === ''){
+        this.setState({passwordError:true});
+    }
+    if(me.confirmPassword === ''){
+        this.setState({confirmPasswordError:true});
+    }
+    if(me.secQuestion === ''){
+        this.setState({secQuestionError:true});
+    }
+    if(me.secAnswer === ''){
+        this.setState({secAnswerError:true});
+    }
+    if(me.passWord === '' && me.confirmPassword === '' && me.secAnswer === '' && me.secQuestion === ''){
+        return;
+    } else {
         this.props.paymentPage();
-    //}
+    }
+},
+userDefinedQuestion(e){
+    let value = e.target.value;
+    this.setState({secQuestion:value,secQuestionError:false,showMenu:false});
 },
 showPassword(){
     this.setState({showPassword:!this.state.showPassword});
 },
+closeModal(){
+    this.props.close();
+},
 render() {
-    let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswerSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
-    let passWordToggle = !this.state.showPassword ? "SHOW PASSWORD" : "HIDE PASSWORD";
+    let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswer !== '' ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
+    let passWordToggle = !this.state.showPassword ? "fa fa-eye unselected" : "fa fa-eye selected";
     let typePassword = this.state.showPassword ? "text":"password"
 return (
-    <div className="QRZT_BasicModal" onClick={this.props.close}>
+    <div className="QRZT_BasicModal">
         <div className="ModalWrap">
+            <div className="closeBtn"><img className="closeImg" onClick={this.closeModal}src="assets/png/close.png"></img></div>
             <center>
                 <h2>Activate Your Account</h2>
             </center>
@@ -101,7 +124,7 @@ return (
                   <div className="form-check">
                     <label className="form-check-label">
                     <input onFocus={()=>{this.setState({showMenu:false})}} type={typePassword} className={this.state.passwordError ? "noErrorField errorField" : "noErrorField"} value={this.state.passWord} onChange={this.userPassword} required/>
-                    <span className="passwordShow" onClick={this.showPassword}>{passWordToggle}</span>
+                    <span className="passwordShow" onClick={this.showPassword}><i className={passWordToggle} aria-hidden="true"></i></span>
                     {this.state.passwordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                     {this.state.passwordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                     <field-label>PASSWORD</field-label>
@@ -113,6 +136,7 @@ return (
                     <div className="form-check">
                         <label className="form-check-label">
                         <input  onFocus={()=>{this.setState({showMenu:false})}} className={this.state.confirmPasswordError ? "noErrorField errorField" : "noErrorField"} value={this.state.confirmPassword} type={typePassword} onChange={this.confirmPassword} required/>
+                        <span className="passwordShow" onClick={this.showPassword}><i className={passWordToggle} aria-hidden="true"></i></span>
                         {this.state.confirmPasswordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                         {this.state.confirmPasswordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                         <field-label>CONFIRM PASSWORD</field-label>
@@ -122,7 +146,7 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                            <input  className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} onChange={this.dummy} required/>
+                            <input  onChange={this.userDefinedQuestion} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
                             <span className="fa fa-caret-down downArrow"></span>
                             <field-label>SECURITY QUESTION</field-label>
                             { this.state.showMenu ? (<ul className="dropDownList">
@@ -153,7 +177,7 @@ return (
                     </div>
                   </div>:false}
                   <center>
-                    <div className="col-lg-12 text-center center-block">
+                    <div className="field col-lg-12">
                         <input  className={submitEnabled} onChange={this.dummy} onClick={this.submit} value="SUBMIT"/>
                     </div>
                   </center>

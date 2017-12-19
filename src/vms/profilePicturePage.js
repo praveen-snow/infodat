@@ -22,13 +22,13 @@ const ProfilePictureSC = function(store) {
                 }});
             }}
             uploadImage={()=>{
-                const UpLoadPopUp = require("components/TermConditionModal");
+                const UpLoadPopUp = require("components/ProfilePictureEdit");
                 store.dispatch({
                     type: "NAV_SET_MODAL_BASE",
                     payload: {
-                      modal: (<UpLoadPopUp mainTxt={"Page Under Construction"}
-                      close={() => {
-                          closeModal('vms/profilePicturePage')
+                      modal: (<UpLoadPopUp 
+                        close={() => {
+                            closeModal('vms/profilePicturePage')
                         }}/>
                       )
                     }

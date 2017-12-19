@@ -43,15 +43,20 @@
         z-index: 2;
         margin-right: 30px;
         font-size: 26px;
-        margin-top: -41px;
+        margin-top: -48px;
     }
     .success, .error{
         height: 31px;
-        margin-right: 18px!important;
+        margin-right: -5px!important;
+        margin-top: -48px!important;
     }
     .error{
         height: 41px;
-        margin-top: -44px;
+    }
+    .success{
+        height: 28px;
+        margin-right: 0px!important;
+        margin-top: -47px!important;
     }
   
     .ModalWrap {
@@ -213,6 +218,9 @@
         .submitBtn{
             width: 50%;
             min-width: 300px;
+            margin: auto;
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
         .networkApplyForm {
             width: 70%;
@@ -223,9 +231,18 @@
         float: right;
         position: relative;
         z-index: 2;
-        margin-right: 8px;
+        margin-right: 31px;
         font-size: 11px;
-        margin-top: -33px;
-        color: rgba(0, 123, 255, 0.8);
+        margin-top: -38px;
+        
+    }
+    .fa{
+        font-size: 20px;
+    }
+    .selected {
+        color: rgba(0,123,255,.8);
+    }
+    .unselected {
+        color: #787878;
     }
   }

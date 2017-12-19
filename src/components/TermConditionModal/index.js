@@ -46,7 +46,7 @@ createSignIn(){
                 <field-label>PASSWORD</field-label>
         </div>);
     arr.push(<center key="signIn">
-        <button className="submitBtn DisableBtn" onClick={this.getStarted}>Sign In</button>
+        <button className="submitBtn DisableBtn" onClick={this.getStarted}>SIGN IN</button>
     </center>);
     arr.push(<div key="pass" className="field overRide col-lg-12">
         <div className="form-check">
