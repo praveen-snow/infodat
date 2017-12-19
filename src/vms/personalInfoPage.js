@@ -12,6 +12,7 @@ const PersonalInfoSC = function(store) {
                     }
                 }});
             }}
+            userInfo={store.getState().userInfo.userDetails}
             goBack={()=>{
                 store.dispatch({type:'NAV_POP_BASE'});
             }}

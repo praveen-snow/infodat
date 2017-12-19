@@ -5,7 +5,6 @@ const CompanyInfoPageSC = function(store) {
     const CompanyInfoPage = require("components/CompanyInfo");
     return (
 		<CompanyInfoPage
-            workEmail={"praveen.chundi@infodatinc.com"}
             goToAreaIntrestInfoPage={()=>{
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
@@ -13,7 +12,7 @@ const CompanyInfoPageSC = function(store) {
                     }
                 }});
             }}
-            companyName={"Quartz Events"}
+            companyName={store.getState().userInfo.userDetails.company}
             goBack={()=>{
                 store.dispatch({type:'NAV_POP_BASE'});
             }}

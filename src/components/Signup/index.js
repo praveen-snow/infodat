@@ -485,7 +485,7 @@ export default React.createClass({
           userDetailsObj.jobFunction = me.jFunction;
           userDetailsObj.phoneNumber = me.phoneExtNumber;
           userDetailsObj.oldEmail = me.oldMember;
-          this.props.submit();
+          this.props.submit(userDetailsObj);
         }
       }
     } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
@@ -502,7 +502,7 @@ export default React.createClass({
         userDetailsObj.jobFunction = me.jFunction;
         userDetailsObj.phoneNumber = me.phoneExtNumber;
         userDetailsObj.oldEmail = me.oldMember;
-        this.props.submit();
+        this.props.submit(userDetailsObj);
       }
     }
     

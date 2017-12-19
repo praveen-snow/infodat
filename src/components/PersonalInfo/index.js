@@ -34,11 +34,11 @@ render() {
                 </center>
                 <section className="MainContent">
                     <div className="nonEditable">NAME</div>
-                    <div className="nonEditable value">John Smith</div>
+                    <div className="nonEditable value">{this.props.userInfo.userName}</div>
                     <div className="nonEditable">COMPANY</div>
-                    <div className="nonEditable value">Quartz Events</div>
+                    <div className="nonEditable value">{this.props.userInfo.compnay}</div>
                     <div className="nonEditable">PRIMARY JOB FUNCTION</div>
-                    <div className="nonEditable value">Procurement</div>
+                    <div className="nonEditable value">{this.props.userInfo.jobFunction}</div>
                 </section>
                 <center>
                     <button className="getStarted previous" 
