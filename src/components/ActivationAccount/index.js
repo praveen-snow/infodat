@@ -33,16 +33,17 @@ showMenu(){
 userPassword(e){
     let value = e.target.value;
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
-    if(value.length > 16){
-        this.setState({passwordSuccess:false,passwordError:true});
+    var splRegex = new RegExp(/^[A-Za-z0-9]+$/gi);
+    if(splRegex.test(value)){
+        if(value.length > 16){
+            this.setState({passwordSuccess:false,passwordError:true});
+        }else if(mediumRegex.test(value)){
+            this.setState({passwordError:false,passwordSuccess:true});
+        } else {
+            this.setState({passwordSuccess:false,passwordError:true});
+        }
+        this.setState({passWord:value});
     }
-    if(mediumRegex.test(value)){
-        this.setState({passwordError:false,passwordSuccess:true});
-    } else {
-        this.setState({passwordSuccess:false,passwordError:true});
-    }
-    this.setState({passWord:value});
-
 },
 confirmPassword(e){
     let value = e.target.value;
@@ -131,7 +132,7 @@ return (
                     </label>
                   </div>
                 </div>
-                {this.state.passwordError ? <center className="passWordValidation">Your password must be 8-16 characters and have atleast one uppercase letter</center> : false}
+                {this.state.passwordError ? <center className="passWordValidation">Your password must be 8-16 characters, have atleast one uppercase letter, have atleast one lowercaper letter and atleast one numeric</center> : false}
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
@@ -146,7 +147,7 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                            <input  onChange={this.userDefinedQuestion} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
+                            <input  onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
                             <span className="fa fa-caret-down downArrow"></span>
                             <field-label>SECURITY QUESTION</field-label>
                             { this.state.showMenu ? (<ul className="dropDownList">

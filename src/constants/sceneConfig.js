@@ -112,10 +112,10 @@ export default {
         }
     },
     pendingApprovalPage:{
-        Enter: {x: spring(-100,[300,20]), z: 2 },
-        Leave: {x: spring(100,[300,25]), z: 2 },
+        Enter: { y:spring(-100, [300, 20]),z: 15 },
+        Leave: { y:spring(100, [300, 20]),z: 15 },
         Styles(val) {
-            return { x:spring(val.x), y: val.y, z: 2, opacity: val.opacity};
+            return { x: val.x, y: spring(val.y), z: 15, opacity: val.opacity };
         },
         VM(store) {
             return require("vms/pendingApprovalPage")(store);
