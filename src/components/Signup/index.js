@@ -351,7 +351,13 @@ export default React.createClass({
         } else {
           this.setState({jobFunctionList:jobFunctionList});
         }
-        if(refsValue.length !== 0 ){
+        if(jobFunctionList.indexOf(value) < 0){
+          noError = key + 'Error';
+          tempObj[noError] = true;
+          success = key + 'Success';
+          tempObj[success] = false;
+          tempObj['showMenu'] = true;
+        } else if(refsValue.length !== 0 ){
           success = key + 'Success';
           tempObj[success] = true;
           noError = key + 'Error';
@@ -453,9 +459,9 @@ export default React.createClass({
         this.setState({oldMemberError:true});
       }else{
         if(emailRegex.test(this.state.oldMember)){
-          this.setState({oldMemberError:false});
+          this.setState({oldMemberError:false,oldMemberSuccess:true});
         }else{
-          this.setState({oldMemberError:true});
+          this.setState({oldMemberError:true,oldMemberSuccess:false});
         }
       }
     }
@@ -515,7 +521,7 @@ export default React.createClass({
     this.setState({jFunction:value,showMenu:false,jFunctionError:false});
   },
   previousMember(){
-    this.setState({previousMember:!this.state.previousMember})
+    this.setState({previousMember:!this.state.previousMember});
   },
   createList(){
     let arr = [];
@@ -542,7 +548,13 @@ export default React.createClass({
     };
     let tandCheck = this.state.tandcError ? "form-check-input notChecked" : "form-check-input";
     let submitEnabled = ( this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
-    submitEnabled = (this.state.previousMember && this.state.oldMember.length === 0) ? 'submitBtn DisableBtn' : submitEnabled;
+    if(this.state.previousMember){
+      if(this.state.oldMemberSuccess){
+        submitEnabled = submitEnabled;
+      }else{
+        submitEnabled = 'submitBtn DisableBtn';
+      }
+    }
     return (
       <div className="modalBackDrop">
       <div className="ClickLayer" onClick={this.props.close}></div>
@@ -585,7 +597,7 @@ export default React.createClass({
                   <field-label>JOB TITLE<sup>*</sup></field-label>
                 </div>
                 <div className= "field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={this.userInput} required/>
+                  <input onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
                   <span onClick={this.showMenu} className="fa fa-caret-down downArrow"></span>
                   <field-label>PRIMARY JOB FUNCTION<sup>*</sup></field-label>
                   { this.state.showMenu ? (<ul className="dropDownList">
