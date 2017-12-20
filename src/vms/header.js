@@ -19,7 +19,7 @@ const headerSC = function(store) {
             navSignUpForm={()=>{
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
-                        userProfilePage:  true,
+                        signup:  true,
                     }
                 }});
             }}
