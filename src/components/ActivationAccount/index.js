@@ -42,8 +42,11 @@ userPassword(e){
         } else {
             this.setState({passwordSuccess:false,passwordError:true});
         }
+        this.setState({passWord:value});
+    }else if(value.length === 0 ){
+        this.setState({passWord:value});
     }
-    this.setState({passWord:value});
+    
 },
 confirmPassword(e){
     let value = e.target.value;
