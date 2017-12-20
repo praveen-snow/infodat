@@ -132,7 +132,7 @@ return (
                     </label>
                   </div>
                 </div>
-                {this.state.passwordError ? <center className="passWordValidation">Your password must be 8-16 characters, have atleast one uppercase letter, have atleast one lowercaper letter and atleast one numeric</center> : false}
+                {this.state.passwordError ? <center className="passWordValidation">Your password must be 8-16 characters, have atleast one uppercase, one lowercase and one numeric</center> : false}
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
