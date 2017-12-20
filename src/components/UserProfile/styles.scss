@@ -1,0 +1,92 @@
+@import "../../styles/_common";
+
+.appBackground {
+	position: absolute;
+	width: 100vw;
+	height: 88vh;
+	background-color: $qzt_wht;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	overflow-y: auto;
+	z-index: -10;
+	top: 80px;
+	color: #818182;
+	.userProfile{
+		width: 70%;
+		left: 0;
+		background: #fff;
+		.profileWrapper{
+			height: auto;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.userProfileWrapper {
+			height: auto;
+			.logo{
+				height: 300px;
+				width: 60%;
+				float: left;
+			}
+			.profilePicture{
+				height: 300px;
+				width: 40%;
+				float: right;
+				cursor: pointer;
+				.editSpan {
+					position: relative;
+					left: 44%;
+					font-size: 30px !important;
+					font-weight: bold;
+					color: #0091f8;
+					visibility: hidden;
+				}
+			}
+			.profilePicture:hover{
+				.editSpan {
+					visibility: visible;
+				}
+			}
+		}
+		.workExperiance {
+			margin-left: 4%;
+			margin-top: 2%;
+			border-bottom: 2px solid rgba(227, 227, 227, 0.71)
+		}
+		.userPersonalInfo {
+			display: grid;
+			padding: 1%;
+		}
+		.userName {
+			font-size: 24px;
+			margin-bottom: 0;
+			color: rgba(70, 74, 78, 0.79);;
+		}
+		.experiance {
+			font-size: 17px !important;
+		}
+		.addMore{
+			color: #0091f8;
+			padding-top: 8px;
+		}
+		.subHeader{
+			font-size: 22px;
+		}
+		span{
+			font-size: 14px;
+		}
+		.subCategoryDec {
+			float: left;
+			border: 1px solid #ccc;
+			margin-right: 10px;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		.subCategory {
+			display: flex;
+		}
+		i.fa.fa-pencil {
+			color: #0091f8;
+			cursor: pointer;
+		}
+	}
+}

@@ -5,7 +5,11 @@ const AreaOfIntrestPageSC = function(store) {
     const AreaOfIntrestPage = require("components/AreaOfIntrest");
     return (
 		<AreaOfIntrestPage
-            goToThankYouPage={()=>{
+            goToThankYouPage={(userInterest)=>{
+                store.dispatch({type:'SAVE_USER_AREA_INTEREST', payload: {
+                    userInterest:userInterest
+                    }
+                });
                 store.dispatch({
                     type: 'NAV_SET_ROUTE_STACK_BASE',
                     payload: {

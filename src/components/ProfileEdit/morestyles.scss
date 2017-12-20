@@ -1,7 +1,10 @@
 @import "../../styles/_common";
-
 .ModalWrap{
-    width: auto !important;
+    width: 81% !important;
+}
+h1{
+    text-align: left;
+    font-size: 26px;
 }
 .MainContent{
     p{
@@ -17,8 +20,15 @@ field-label{
 .noErrorField{
     padding-left: 2.5%;
 }
+.Heading {
+    text-align: center !important;
+    width: 70% !important;
+    margin: auto !important;
+    font-size: 16px !important;
+}
 h3{
     font-size: 24px;
+    color:#000;
 }
 .next {
     margin-left: 25px;
@@ -32,15 +42,18 @@ h3{
     padding-top: 14px;
     cursor: pointer;
     .cartBorder{
-        border-bottom: 3px solid #fff;
+        border-bottom: 3px solid #000;
+        color: #000;
     }
     .catSelected{
+        color: #000;
         border-bottom: 3px solid #0091f8;
     }
 }
 .cateGory:hover{
     h3{
-        border-bottom: 3px solid #fff;
+        border-bottom: 3px solid #000;
+        color: #000;
     }
 }
 .AllCateGory {
@@ -58,6 +71,7 @@ h3{
         .flexFlow {
             width: 100%;
             float: left;
+            display: block !important;
         }
         .subWrapper{
             widows: 100%;
@@ -65,7 +79,7 @@ h3{
                 height: 93px;
                 width: 22%;
                 margin: auto;
-                background: #fff;
+                background: #ccc;
                 margin-right: 10px;
                 margin-left: 16px;
                 float: left;
@@ -81,4 +95,3 @@ h3{
         }
     }  
 }
-

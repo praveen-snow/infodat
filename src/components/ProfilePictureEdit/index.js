@@ -12,8 +12,8 @@ getInitialState() {
     return {
         userName:'',
         passWord:'',
-        zoom:10,
-        rotate:10
+        zoom:0,
+        rotate:0
     }
 },
 componentWillMount() {
@@ -25,9 +25,14 @@ componentWillUnmount() {
 closeModal(){
     this.props.close();
 },
-handleOnChange(value) {
+handleOnChangeZoom(value) {
     this.setState({
       zoom: value
+    })
+},
+handleOnChangeRotate(value) {
+    this.setState({
+      rotate: value
     })
 },
 render() {
@@ -42,16 +47,18 @@ render() {
                     <img className="upload" src="assets/png/upload.png"></img>
                 </center>
                 <div className="editAbles">
-                <Slider
-                    value={this.state.zoom}
-                    orientation="horizontal"
-                    onChange={this.handleOnChange}
-                />
-                <Slider
-                    value={this.state.rotate}
-                    orientation="horizontal"
-                    onChange={this.handleOnChange}
-                />
+                    <Slider
+                        value={this.state.zoom}
+                        orientation="horizontal"
+                        onChange={this.handleOnChangeZoom}
+                    />
+                </div>
+                <div className="editAbles">
+                    <Slider
+                        value={this.state.rotate}
+                        orientation="horizontal"
+                        onChange={this.handleOnChangeRotate}
+                    />
                 </div>
             </section>
             </div>

@@ -8,9 +8,9 @@ mixins: [PureRenderMixin],
 getInitialState() {
     return {
         mouserHover:false,
-        revenue:'',
-        industry:'',
-        employeeSize:''
+        revenue:'600,000,000',
+        industry:this.props.industry,
+        employeeSize:'250'
     }
 },
 componentWillMount() {

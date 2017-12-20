@@ -15,9 +15,8 @@ componentWillMount() {
 componentWillUnmount() {
     ss.unuse();
 },
-getStarted(){
-    console.log("View Profile");
-    //this.props.getStarted();
+viewProfile(){
+    this.props.goToViewProfilePage();
 },
   
 render() {
@@ -32,7 +31,7 @@ render() {
                     <p>Thank you for completing your profile. We'll notify you when Think Tank submissions open. In the meantime, log in at any time to edit your profile.</p>
                 </section>
                 <center>
-                    <button className="getStarted" onClick={this.getStarted}>VIEW PROFILE</button>
+                    <button className="getStarted" onClick={this.viewProfile}>VIEW PROFILE</button>
                 </center>
             </div>
         </div>

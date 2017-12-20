@@ -1,7 +1,9 @@
-/* src/components/PaymentPage */
+/* src/components/BasicModal */
+
 import React from 'react';
-import ss from './styles.scss';
+import ss from './morestyles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
+
 let cateGoryObj = {
     'Supply Chain':['Supply 1','Supply 2','Supply 3','Supply 4','Supply 5','Supply 6','Supply 7','Supply 8'],
     'Procurement':['Procurement 1','Procurement 2','Procurement 3','Procurement 4','Procurement 5','Procurement 6','Procurement 7','Procurement 8'],
@@ -26,9 +28,6 @@ componentWillMount() {
 },
 componentWillUnmount() {
     ss.unuse();
-},
-goToPersonalInfoPage(){
-    this.props.goToPersonalInfoPage();
 },
 subCateGorySelection(e){
     let id = e.target.id;
@@ -88,76 +87,25 @@ createCategoryBtns(){
     }
     return arr;
 },
-goToThankYouPage(){
-    let userInterest = {};
-    let userInterestSubCategory = [];
-    let cateGoryObj = this.state.category;
-    let selected = {...this.state.selected};
-
-    for(let cat in cateGoryObj){
-        let tempObj = cateGoryObj[cat];
-        userInterestSubCategory = [];
-        for(let key in selected){
-            if(tempObj.indexOf(key) >=0 ){
-                userInterestSubCategory.push(key);
-                userInterest[cat] = userInterestSubCategory;
-            }
-        }
-    }
-    //console.log(userInterest);
-    this.props.goToThankYouPage(userInterest);
-},
 render() {
-    let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswerSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
-    let nextClass = this.state.mouserHover ? "getStarted next DisableBtn" : "getStarted next";
     return (
-        <div className="QRZT_BasicModal" onClick={this.props.close}>
-            <div className="ModalWrap">
-                <section className="MainContent">
-                    <p>4 of 4</p>
-                </section>
-                <center>
-                    <p className="heading">Areas of Interest</p>
-                </center>
-                <section className="MainContent">
-                    <p>Select Areas of Interests from the Categories below.</p>
-                </section>
-                <center className="categoryBtn">
-                    {this.createCategoryBtns()}
-                </center>
-                <div className="AllCateGory">
-                    <div className="wrapper">
-                        <div className="subCateGory">
-                            <div className="flexFlow">
-                                <div className="subWrapper">
-                                    {this.createSubCategory()}
-                                </div>
+        <div>
+            <h1>Edit Special Interests</h1>
+            <h2 className="Heading">Select Areas of Interests from the Categories below. Each category contains diffarent areas of interest.</h2>
+            <center className="categoryBtn">
+                {this.createCategoryBtns()}
+            </center>
+            <div className="AllCateGory">
+                <div className="wrapper">
+                    <div className="subCateGory">
+                        <div className="flexFlow">
+                            <div className="subWrapper">
+                                {this.createSubCategory()}
                             </div>
                         </div>
                     </div>
                 </div>
-                <center>
-                    <button className="getStarted previous" 
-                        onMouseOver={()=>{
-                            this.setState({mouserHover:true});
-                        }}
-                        onMouseOut={()=>{
-                            this.setState({mouserHover:false});
-                        }}
-                        onClick={this.props.goBack}>PREVIOUS</button>
-                    <button className={nextClass} onClick={this.goToThankYouPage}>NEXT</button>
-                </center>
-                <center>
-                    <label className="skip" onClick={this.goToThankYouPage}>Skip this step</label>
-                </center>
             </div>
-        </div>
-    );
-},
+        </div>);
+    },
 });
-
-{/* <div className="AllCateGory">
-<div className="wrapper">
-    {this.createCategory()}
-</div>
-</div> */}

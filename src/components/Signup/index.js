@@ -511,10 +511,7 @@ export default React.createClass({
         this.props.submit(userDetailsObj);
       }
     }
-    
-    
     //this.props.submit(userDetailsObj);
-    
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;

@@ -1,0 +1,152 @@
+@import "../../styles/_common";
+
+.VZ_BasicModal {
+  background-color: rgba(73, 80, 87, 0.4196078431372549);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  transform: translate3d(0, 0, 20px);
+  /* Fix for iOS & Safari */
+  .ModalWrap {
+    position: relative;
+    width: 70%;
+    box-shadow: 0 0 5px 0;
+    background: #fff;
+    z-index: 9999;
+    bottom: 10%;
+    @include respond(medium) {
+      width: 60%;
+    }
+    @include respond(small) {
+      border-radius: 0;
+      box-shadow: none;
+      width: 100%;
+    }
+    .spanClass{
+      margin-left: 15px;
+    }
+    .Heading{
+      font-size: 26px;
+    }
+    .editAbles{
+      width: 100%;
+      display: block;
+      .rangeslider-horizontal {
+        height: 2px;
+      }
+      .rangeslider-horizontal .rangeslider__fill {
+        height: 100%;
+        background-color: #333;
+      }
+    }
+    .form-check{
+      display: inline-block;
+      padding: 1%;
+      .form-check-label{
+        color: rgba(51,123,246,.59);
+        font-size: 13px;
+      }
+      .form-check-input{
+        margin-top: 2px;
+      }
+    }
+    .submitBtn{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .MainContent {
+      padding: 2%;
+      padding-top: 0;
+      h1{
+        font-size: 18pt;
+        padding: 25px;
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+      p {
+        display: block;
+        font-size: 12pt;
+        text-align: justify;
+        margin: auto;
+        padding: 30px;
+        padding-top: 0;
+        @include respond(small) {
+          margin-left: 5em;
+        }
+      }
+      .networkApplyForm {
+				width: 70%;
+        margin: 0 auto;
+        padding-top: 3%;
+      }
+      textarea {
+        resize: none;
+        height: 20vh;
+     }
+    }
+    .getStarted{
+        color: #fff;
+        width: 260px;
+        font-size: 18px;
+        height: 58px;
+        border-radius: 4px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .next{
+        background-color: #0091f8;
+    }
+    .previous{
+        background-color: #c2c3c2;
+    }
+    .DisableBtn{
+        background-color: #c2c3c2;
+    }
+    .previous:hover{
+        background-color: #0091f8;
+    }
+    .flexFlow{
+      display: flex;
+      width: 100%;
+    }
+    .field{
+      float: left;
+    }
+    .downArrow, .success, .error {
+			float: right;
+			position: relative;
+			z-index: 2;
+			margin-right: 30px;
+			font-size: 26px;
+			margin-top: -41px;
+		}
+		.success, .error{
+			height: 31px;
+			margin-right: 18px;
+		}
+		.error{
+			height: 41px;
+			margin-right: 19px;
+			margin-top: -44px;
+		}
+    .closeBtn {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 3%;
+      padding-bottom: 0;
+      .closeImg {
+        width: 20pt;
+        height: 20pt;
+      }
+    }
+  }
+}

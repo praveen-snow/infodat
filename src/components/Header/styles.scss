@@ -17,17 +17,39 @@
       .leftWrapper{
         width:50%;
         float: left;
+        height: 80px;
+        .headerLogo{
+          margin-right: 10px;
+          margin-left: 40px;
+          height: 38px;
+        }
+        .logoWrap{
+          display: flex;
+          padding: 30px;
+        }
+        h1{
+          font-size: 30px;
+          font-weight: bold;
+          color: rgb(129, 129, 130);
+        }
       }
       .rightWrapper{
         width:50%;
         float: right;
         text-align: right
       }
+      a#SignIn {
+          font-size: 22px;
+          margin-right: 20px;
+          text-decoration: none;
+          cursor: pointer;
+      }
       .btnPrimary{
         height: 80px;
         width: 130px;
         border-radius: 0;
         background-color: #0091f8;
+        cursor: pointer;
       }
     }
   }

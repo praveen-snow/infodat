@@ -5,7 +5,7 @@ const AccountActivationSC = function(store) {
     const ActivationAccount = require("components/ActivationAccount");
     return (
 		<ActivationAccount
-            workEmail={store.getState().userInfo.userDetails.workEmail}
+            workEmail={store.getState().userInfo.userDetails ? store.getState().userInfo.userDetails.workEmail : ''}
             close={() => {
                 store.dispatch({
                   type: 'NAV_SET_ROUTE_STACK_BASE',

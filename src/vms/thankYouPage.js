@@ -6,19 +6,15 @@ const ThankYouPageSC = function(store) {
     return (
 		<ThankYouPage
             goToViewProfilePage={()=>{
-                store.dispatch({
-                    type: 'NAV_SET_ROUTE_STACK_BASE',
-                    payload: {
-                        history: [],
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
                         current: {
-                            viewProfilePage: true
+                            userProfilePage: true
                         }
                     }
                 });
             }}
         />
 	);
-
 }
 //
 export default ThankYouPageSC;

@@ -120,5 +120,15 @@ export default {
         VM(store) {
             return require("vms/pendingApprovalPage")(store);
         }
+    },
+    userProfilePage:{
+        Enter: { y:spring(-100, [300, 20]),z: 15 },
+        Leave: { y:spring(100, [300, 20]),z: 15 },
+        Styles(val) {
+            return { x: val.x, y: spring(val.y), z: 15, opacity: val.opacity };
+        },
+        VM(store) {
+            return require("vms/userProfilePage")(store);
+        }
     }
 };

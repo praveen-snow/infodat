@@ -13,6 +13,7 @@ const CompanyInfoPageSC = function(store) {
                 }});
             }}
             companyName={store.getState().userInfo.userDetails.company}
+            industry={store.getState().userInfo.userDetails.jobFunction}
             goBack={()=>{
                 store.dispatch({type:'NAV_POP_BASE'});
             }}
