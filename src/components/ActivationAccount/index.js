@@ -42,13 +42,17 @@ userPassword(e){
         } else {
             this.setState({passwordSuccess:false,passwordError:true});
         }
-        this.setState({passWord:value});
     }
+    this.setState({passWord:value});
 },
 confirmPassword(e){
     let value = e.target.value;
     if(this.state.passWord === value){
-        this.setState({confirmPasswordError:false,confirmPasswordSuccess:true});
+        if(value.length === 0){
+            this.setState({confirmPasswordError:true,confirmPasswordSuccess:false});
+        }else{
+            this.setState({confirmPasswordError:false,confirmPasswordSuccess:true});
+        }  
     } else {
         this.setState({confirmPasswordError:true,confirmPasswordSuccess:false});
     }
