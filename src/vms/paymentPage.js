@@ -7,25 +7,21 @@ const PaymentPageSC = function(store) {
 		<PaymentPage
             close={() => {
                 store.dispatch({
-                type: 'NAV_SET_ROUTE_STACK_BASE',
-                payload: {
-                    history: [],
-                    current: {
-                    backdrop: true
-                    }
-                }
-                });
-            }}
-            goToBuildProfile={()=>{
-                store.dispatch({
                     type: 'NAV_SET_ROUTE_STACK_BASE',
                     payload: {
                         history: [],
                         current: {
-                            buildProfilePage: true
+                            backdrop: true
                         }
                     }
                 });
+            }}
+            goToBuildProfile={()=>{
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
+                    current: {
+                        buildProfilePage:  true,
+                    }
+                }});
             }}
         />
 	);

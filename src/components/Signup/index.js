@@ -4,7 +4,7 @@ import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 import { bindListener } from 'utils';
 
-let jobFunctionList = ['Supply Chain','Procurement','Manufacturing','Finance','Human Resources','Marketing'];
+let jobFunctionList = ['Supply Chain','Procurement','Manufacturing/Operations','Finance','Human Resources','Marketing'];
 export default React.createClass({
   mixins: [PureRenderMixin],
   
@@ -48,7 +48,10 @@ export default React.createClass({
       tandcError:false,
       tandc:false,
       splitPhoneNumber:false,
-      phoneExtNumber:''
+      phoneExtNumber:'',
+      companySite:'',
+      companySiteError:false,
+      companySiteSuccess:false
 		};
 	},
 
@@ -133,18 +136,18 @@ export default React.createClass({
       marginLeft : '66%'
     };
 
-    return (<div style={splitStyle} className="field col-lg-12"><input onFocus={ this.onFocusNumber } style={phoneNumberStyle} className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneNumber} maxLength="10" onChange={this.formatPhoneNumber} required id="phone"/>
+    return (<div style={splitStyle} className="field col-lg-12"><input autoComplete="off" onFocus={ this.onFocusNumber } style={phoneNumberStyle} className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneNumber} maxLength="10" onChange={this.formatPhoneNumber} required id="phone"/>
       <field-label>PHONE NUMBER<sup>*</sup></field-label>
-      <input style={extNumberStyle} className="noErrorField extension" id="extNumber" onBlur={ this.onBlurControl } onFocus={ this.onFocusNumber } type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
+      <input autoComplete="off" style={extNumberStyle} className="noErrorField extension" id="extNumber" onBlur={ this.onBlurControl } onFocus={ this.onFocusNumber } type="text" onChange={this.userInput} value={this.state.extNumber} onChange={this.formatExtNumber} maxLength="6" required id="phone"/>
       <field-label style={fieldStyle}>EXT</field-label></div>);
   },
   createPhoneNumber(){
-    return (<div className="field col-lg-12"><input onFocus={ this.onFocusNumber } className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneExtNumber} required id="phone"/>
+    return (<div className="field col-lg-12"><input autoComplete="off" onFocus={ this.onFocusNumber } className={this.state.phoneNumberError? "noErrorField errorField" : "noErrorField"} id="phoneNumber" type="text" value={this.state.phoneExtNumber} required id="phone"/>
       <field-label>PHONE NUMBER<sup>*</sup></field-label></div>);
   },
   createName(){
     return (<div className="field col-lg-12">
-    <input className={this.state.fullNameError ? "noErrorField errorField" : "noErrorField"} value={this.state.fullName} id="fullName" onFocus={ this.onFocus } type="text" onChange={this.userInput} required/>
+    <input autoComplete="off" className={this.state.fullNameError ? "noErrorField errorField" : "noErrorField"} value={this.state.fullName} id="fullName" onFocus={ this.onFocus } type="text" onChange={this.userInput} required/>
       {this.state.fullNameError ? <img className="error" src="assets/png/error.svg"></img> :
       false}
       {this.state.fullNameSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
@@ -159,9 +162,9 @@ export default React.createClass({
       marginLeft : '47%'
     };
     return (<div style={splitStyle} className="field col-lg-12">
-      <input id="fName" value={this.state.fName} className="noErrorField" type="text" onFocus={ this.onFocus } onChange={this.userInput} required/>
+      <input autoComplete="off" id="fName" value={this.state.fName} className="noErrorField" type="text" onFocus={ this.onFocus } onChange={this.userInput} required/>
       <field-label >FIRST NAME<sup>*</sup></field-label>
-      <input value={this.state.lName} id="lName" className="noErrorField" type="text" onFocus={ this.onFocus } onBlur={this.antiFocus} onChange={this.userInput} required/>
+      <input autoComplete="off" value={this.state.lName} id="lName" className="noErrorField" type="text" onFocus={ this.onFocus } onBlur={this.antiFocus} onChange={this.userInput} required/>
       <field-label style={fieldStyle} >LAST NAME<sup>*</sup></field-label>
       </div>);
   },
@@ -398,6 +401,17 @@ export default React.createClass({
       this.setState(tempObj);
     }
   },
+  onChangeCompanySite(e){
+    let value = e.target.value;
+    let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
+    let regex = new RegExp(expression);
+    if(regex.test(value)){
+      this.setState({companySiteSuccess:true,companySiteError:false});
+    }else{
+      this.setState({companySiteSuccess:false,companySiteError:true});
+    }
+    this.setState({companySite:value});
+  },
   submit(){
     let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if(this.state.tandc){
@@ -454,6 +468,18 @@ export default React.createClass({
       this.setState({jFunctionError:false});
     }
 
+    if(this.state.companySite === ''){
+      this.setState({companySiteError:true});
+    }else{
+      let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
+      let regex = new RegExp(expression);
+      if(regex.test(this.state.companySite)){
+        this.setState({companySiteError:false});
+      }else{
+        this.setState({companySiteError:true});
+      }
+    }
+
     if(this.state.previousMember){
       if(this.state.oldMember === ''){
         this.setState({oldMemberError:true});
@@ -476,8 +502,8 @@ export default React.createClass({
         return;
       }
     }
-    if(!me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-      if(me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+    if(!me.companySiteError && !me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
+      if(me.companySite.length === 0 && me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
         return;
       } else {
         if(this.state.tandcError){
@@ -491,10 +517,11 @@ export default React.createClass({
           userDetailsObj.jobFunction = me.jFunction;
           userDetailsObj.phoneNumber = me.phoneExtNumber;
           userDetailsObj.oldEmail = me.oldMember;
+          userDetailsObj.companySite = me.companySite;
           this.props.submit(userDetailsObj);
         }
       }
-    } else if(me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
+    } else if(me.companySiteError || me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
       return;
     } else {
       if(this.state.tandcError){
@@ -508,6 +535,7 @@ export default React.createClass({
         userDetailsObj.jobFunction = me.jFunction;
         userDetailsObj.phoneNumber = me.phoneExtNumber;
         userDetailsObj.oldEmail = me.oldMember;
+        userDetailsObj.companySite = me.companySite;
         this.props.submit(userDetailsObj);
       }
     }
@@ -544,7 +572,7 @@ export default React.createClass({
       width:'30%'
     };
     let tandCheck = this.state.tandcError ? "form-check-input notChecked" : "form-check-input";
-    let submitEnabled = ( this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
+    let submitEnabled = ( this.state.companySiteSuccess && this.state.tandc && this.state.fullNameSuccess && this.state.wEmailSuccess && this.state.companySuccess && this.state.jTitleSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
     if(this.state.previousMember){
       if(this.state.oldMemberSuccess){
         submitEnabled = submitEnabled;
@@ -565,7 +593,7 @@ export default React.createClass({
               <form className="row networkApplyForm">
                 <div className="legends"><sup>*</sup> Required</div>
                 <div className="field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.invitationNumberError ? "noErrorField errorField" : "noErrorField"} value={this.state.invitationNumber} id="invitationNumber" type="text" onChange={this.userInput}/>
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.invitationNumberError ? "noErrorField errorField" : "noErrorField"} value={this.state.invitationNumber} id="invitationNumber" type="text" onChange={this.userInput}/>
                     {this.state.invitationNumberError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.invitationNumberSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
@@ -573,28 +601,35 @@ export default React.createClass({
                 </div>
                 { this.state.splitName ? this.createSplitNames() : this.createName() }
                 <div className="field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.wEmailError ? "noErrorField errorField" : "noErrorField"} value={this.state.wEmail} id="wEmail" type="text" onChange={this.userInput} required/>
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.wEmailError ? "noErrorField errorField" : "noErrorField"} value={this.state.wEmail} id="wEmail" type="text" onChange={this.userInput} required/>
                     {this.state.wEmailError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.wEmailSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                   <field-label>WORK EMAIL<sup>*</sup></field-label>
                 </div>
                 <div className="field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.companyError ? "noErrorField errorField" : "noErrorField"} value={this.state.company} id="company" type="text" onChange={this.onChangeCompany} required/>
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.companyError ? "noErrorField errorField" : "noErrorField"} value={this.state.company} id="company" type="text" onChange={this.onChangeCompany} required/>
                     {this.state.companyError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.companySuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
                   <field-label>COMPANY<sup>*</sup></field-label>
                 </div>
                 <div className="field col-lg-12">
-                  <input  onFocus={ this.antiFocus } className={this.state.jTitleError ? "noErrorField errorField" : "noErrorField"} value={this.state.jTitle} id="jTitle" type="text" onChange={this.onChangeJTitle} required/>
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.companySiteError ? "noErrorField errorField" : "noErrorField"} value={this.state.companySite} id="companySite" type="text" onChange={this.onChangeCompanySite} required/>
+                    {this.state.companySiteError ? <img className="error" src="assets/png/error.svg"></img> :
+                    false}
+                    {this.state.companySiteSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
+                  <field-label>COMPANY WEBSITE<sup>*</sup></field-label>
+                </div>
+                <div className="field col-lg-12">
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.jTitleError ? "noErrorField errorField" : "noErrorField"} value={this.state.jTitle} id="jTitle" type="text" onChange={this.onChangeJTitle} required/>
                     {this.state.jTitleError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.jTitleSuccess ?<img className="success" src="assets/png/success.svg"></img> : false}
                   <field-label>JOB TITLE<sup>*</sup></field-label>
                 </div>
                 <div className= "field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
+                  <input autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
                   <span onClick={this.showMenu} className="fa fa-caret-down downArrow"></span>
                   <field-label>PRIMARY JOB FUNCTION<sup>*</sup></field-label>
                   { this.state.showMenu ? (<ul className="dropDownList">
@@ -603,7 +638,7 @@ export default React.createClass({
                 </div>
                 {this.state.splitPhoneNumber ? this.createSplitNumber() : this.createPhoneNumber()}
                 {this.state.previousMember ? <div className="field col-lg-12">
-                  <input onFocus={ this.antiFocus } className={this.state.oldMemberError ? "noErrorField errorField" : "noErrorField"} value={this.state.oldMember} id="oldMember" type="text" onChange={this.userInput} required/>
+                  <input autoComplete="off" onFocus={ this.antiFocus } className={this.state.oldMemberError ? "noErrorField errorField" : "noErrorField"} value={this.state.oldMember} id="oldMember" type="text" onChange={this.userInput} required/>
                     {this.state.oldMemberError ? <img className="error" src="assets/png/error.svg"></img> :
                     false}
                     {this.state.oldMemberSuccess?<img className="success" src="assets/png/success.svg"></img> : false}
@@ -612,19 +647,19 @@ export default React.createClass({
                 <div className="field col-lg-12">
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input  id="previousMember" onClick={this.previousMember}className="form-check-input" type="checkbox"/>
+                      <input  autoComplete="off" id="previousMember" onClick={this.previousMember}className="form-check-input" type="checkbox"/>
                        Previous member?
                     </label>
                   </div>
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input className= {tandCheck} onClick={this.checkTandC} id="tandc" type="checkbox"/>
-                      I agree to the <a href="javascript:void(0);" id="agree" onClick={this.OpenTC}>Quartz The Network Terms and Conditions<sup>*</sup></a>
+                      <input autoComplete="off" className= {tandCheck} onClick={this.checkTandC} id="tandc" type="checkbox"/>
+                      I agree to the <a href="javascript:void(0);" id="agree" onClick={this.OpenTC}>Terms and Conditions<sup>*</sup></a>
                     </label>
                   </div>     
                 </div>
                 <div className="col-lg-12 text-center center-block">
-                  <input className={submitEnabled} onClick={this.submit} onChange={()=>{return}} value="SUBMIT APPLICATION"/>
+                  <input autoComplete="off" className={submitEnabled} onClick={this.submit} onChange={()=>{return}} value="SUBMIT APPLICATION"/>
                 </div>
                 <div id="SignIn" onClick={this.OpenTC} className="col-lg-12">
                   <center id="SignIn">

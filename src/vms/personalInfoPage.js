@@ -15,6 +15,11 @@ const PersonalInfoSC = function(store) {
             userInfo={store.getState().userInfo.userDetails}
             goBack={()=>{
                 store.dispatch({type:'NAV_POP_BASE'});
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
+                    current: {
+                        profilePicturePage: true
+                    }
+                }});
             }}
         />
 	);

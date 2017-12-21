@@ -30,6 +30,9 @@
           margin-left: 5em;
         }
       }
+        sup {
+            color: #205081;
+        }
     }
     .passWordValidation{
         color: $qzt_red;
@@ -47,16 +50,16 @@
     }
     .success, .error{
         height: 31px;
-        margin-right: -5px!important;
-        margin-top: -48px!important;
+        margin-right: 21px!important;
+        margin-top: -41px!important;
     }
     .error{
         height: 41px;
     }
     .success{
         height: 28px;
-        margin-right: 0px!important;
-        margin-top: -47px!important;
+        margin-right: 24px !important;
+        margin-top: -32px!important;
     }
   
     .ModalWrap {
@@ -130,7 +133,7 @@
             font-weight: 100;
             position: absolute;
             pointer-events: none;
-            left: 7.5%;
+            left: 40px;
             top: 18%;
             transition: 0.2s ease-in-out all;
             -moz-transition: 0.2s ease-in-out all;
@@ -233,8 +236,7 @@
         z-index: 2;
         margin-right: 31px;
         font-size: 11px;
-        margin-top: -38px;
-        
+        margin-top: -50px;
     }
     .fa{
         font-size: 20px;

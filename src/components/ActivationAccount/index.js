@@ -126,16 +126,16 @@ return (
               </div>
             </center>
             <div className="field col-lg-12">
-                <div className="legends">All fields are required</div>
+                <div className="legends"><sup>*</sup>Required</div>
             </div>
               <div className="field col-lg-12">
                   <div className="form-check">
                     <label className="form-check-label">
-                    <input onFocus={()=>{this.setState({showMenu:false})}} type={typePassword} className={this.state.passwordError ? "noErrorField errorField" : "noErrorField"} value={this.state.passWord} onChange={this.userPassword} required/>
+                    <input autoComplete="off" onFocus={()=>{this.setState({showMenu:false})}} type={typePassword} className={this.state.passwordError ? "noErrorField errorField" : "noErrorField"} value={this.state.passWord} onChange={this.userPassword} required/>
                     <span className="passwordShow" onClick={this.showPassword}><i className={passWordToggle} aria-hidden="true"></i></span>
                     {this.state.passwordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                     {this.state.passwordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
-                    <field-label>PASSWORD</field-label>
+                    <field-label>PASSWORD<sup>*</sup></field-label>
                     </label>
                   </div>
                 </div>
@@ -143,20 +143,20 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                        <input  onFocus={()=>{this.setState({showMenu:false})}} className={this.state.confirmPasswordError ? "noErrorField errorField" : "noErrorField"} value={this.state.confirmPassword} type={typePassword} onChange={this.confirmPassword} required/>
+                        <input  autoComplete="off" onFocus={()=>{this.setState({showMenu:false})}} className={this.state.confirmPasswordError ? "noErrorField errorField" : "noErrorField"} value={this.state.confirmPassword} type={typePassword} onChange={this.confirmPassword} required/>
                         <span className="passwordShow" onClick={this.showPassword}><i className={passWordToggle} aria-hidden="true"></i></span>
                         {this.state.confirmPasswordError ? <img className="error" src="assets/png/error.svg"></img> : false}
                         {this.state.confirmPasswordSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
-                        <field-label>CONFIRM PASSWORD</field-label>
+                        <field-label>CONFIRM PASSWORD<sup>*</sup></field-label>
                         </label>
                     </div>
                   </div>
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                            <input  onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
+                            <input  autoComplete="off" onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
                             <span className="fa fa-caret-down downArrow"></span>
-                            <field-label>SECURITY QUESTION</field-label>
+                            <field-label>SECURITY QUESTION<sup>*</sup></field-label>
                             { this.state.showMenu ? (<ul className="dropDownList">
                                 <li data-id="What is the name of the road you grew up on?" onClick={this.selectSecQuestion}>
                                 <a>What is the name of the road you grew up on?</a>
@@ -177,16 +177,16 @@ return (
                   {this.state.secQuestion !== ''? <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                        <input  className={this.state.secAnswerError ? "noErrorField errorField" : "noErrorField"} value={this.state.secAnswer} type="text" onChange={this.secAnswer} onFocus={()=>{this.setState({showMenu:false})}} required/>
+                        <input autoComplete="off" className={this.state.secAnswerError ? "noErrorField errorField" : "noErrorField"} value={this.state.secAnswer} type="text" onChange={this.secAnswer} onFocus={()=>{this.setState({showMenu:false})}} required/>
                         {this.state.secAnswerError ? <img className="error" src="assets/png/error.svg"></img> : false}
                         {this.state.secAnswerSuccess ? <img className="success" src="assets/png/success.svg"></img> : false}
-                        <field-label>ANSWER</field-label>
+                        <field-label>ANSWER<sup>*</sup></field-label>
                         </label>
                     </div>
                   </div>:false}
                   <center>
                     <div className="field col-lg-12">
-                        <input  className={submitEnabled} onChange={this.dummy} onClick={this.submit} value="SUBMIT"/>
+                        <input autoComplete="off" className={submitEnabled} onChange={this.dummy} onClick={this.submit} value="SUBMIT"/>
                     </div>
                   </center>
             </div>

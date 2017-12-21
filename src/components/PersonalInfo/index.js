@@ -27,7 +27,7 @@ render() {
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
                 <section className="MainContent">
-                    <p>2 of 4</p>
+                    <p>2 of 5</p>
                 </section>
                 <center>
                     <p className="heading">Personal Information</p>

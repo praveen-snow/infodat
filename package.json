@@ -1,7 +1,7 @@
 {
-  "name": "schoolBookNow",
+  "name": "QtheNetwork",
   "version": "0.0.1",
-  "description": "schoolBookNow",
+  "description": "QtheNetwork",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf build/webpack",

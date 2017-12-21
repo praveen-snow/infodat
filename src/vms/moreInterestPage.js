@@ -1,26 +1,25 @@
 import React from 'react';
 
-const AreaOfIntrestPageSC = function(store) {
+const MoreInterestPageSC = function(store) {
     //Components
-    const AreaOfIntrestPage = require("components/AreaOfIntrest");
+    const MoreInterestPage = require("components/MoreInterest");
     return (
-		<AreaOfIntrestPage
-            userJobFunction={store.getState().userInfo.userDetails.jobFunction || "Supply Chain"}
+		<MoreInterestPage
             goToThankYouPage={(userInterest)=>{
                 store.dispatch({type:'SAVE_USER_AREA_INTEREST', payload: {
                     userInterest:userInterest
                     }
                 });
-                store.dispatch({
-                    type: 'NAV_PUSH_BASE',
-                    payload: {
+                store.dispatch({type:'NAV_REPLACE_AT_INDEX_BASE', payload: {
+                        index:0,
                         current: {
-                            moreInterestPage: true
+                            thankYouPage: true
                         }
                     }
                 });
             }}
             goBack={()=>{
+                store.dispatch({type:'NAV_POP_BASE'});
                 store.dispatch({type:'NAV_POP_BASE'});
             }}
         />
@@ -28,4 +27,4 @@ const AreaOfIntrestPageSC = function(store) {
 
 }
 //
-export default AreaOfIntrestPageSC;
+export default MoreInterestPageSC;

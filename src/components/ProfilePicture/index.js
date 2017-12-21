@@ -25,7 +25,7 @@ render() {
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
                 <section className="MainContent">
-                    <p>1 of 4</p>
+                    <p>1 of 5</p>
                 </section>
                 <center>
                     <p className="heading">Upload Profile Image</p>

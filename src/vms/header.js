@@ -17,12 +17,18 @@ const headerSC = function(store) {
     return (
         <Header
             navSignUpForm={()=>{
-                store.dispatch({type:'NAV_PUSH_BASE', payload: {
+                store.dispatch({type:'NAV_SET_ROUTE_STACK_BASE', payload:{
+                    history: [],
                     current: {
-                        signup:  true,
-                    }
-                }});
+                        signup: true
+                    }}
+                });
             }}
+
+            currentListener={ (updater)=> {
+                store.subscribe(function() { updater(store.getState().navigator.current); });
+            }}
+
             signIn={(id)=>{
                 store.dispatch({
                     type: "NAV_SET_MODAL_BASE",

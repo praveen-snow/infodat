@@ -3,22 +3,22 @@ import React from 'react';
 import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 let cateGoryObj = {
-    'Category 1':['Sub Category 1.1','Sub Category 1.2','Sub Category 1.3','Sub Category 1.4','Sub Category 1.5','Sub Category 1.6','Sub Category 1.7','Sub Category 1.8'],
-    'Category 2':['Sub Category 2.1','Sub Category 2.2','Sub Category 2.3','Sub Category 2.4','Sub Category 2.5','Sub Category 2.6','Sub Category 2.7','Sub Category 2.8'],
-    'Category 3':['Sub Category 3.1','Sub Category 3.2','Sub Category 3.3','Sub Category 3.4','Sub Category 3.5','Sub Category 3.6','Sub Category 3.7','Sub Category 3.8'],
-    'Category 4':['Sub Category 4.1','Sub Category 4.2','Sub Category 4.3','Sub Category 4.4','Sub Category 4.5','Sub Category 4.6','Sub Category 4.7','Sub Category 4.8'],
-    'Category 5':['Sub Category 5.1','Sub Category 5.2','Sub Category 5.3','Sub Category 5.4','Sub Category 5.5','Sub Category 5.6','Sub Category 5.7','Sub Category 5.8'],
-    'Category 6':['Sub Category 6.1','Sub Category 6.2','Sub Category 6.3','Sub Category 6.4','Sub Category 6.5','Sub Category 6.6','Sub Category 6.7','Sub Category 6.8']
+    'Supply Chain':['Supply 1','Supply 2','Supply 3','Supply 4','Supply 5','Supply 6','Supply 7','Supply 8'],
+    'Procurement':['Procurement 1','Procurement 2','Procurement 3','Procurement 4','Procurement 5','Procurement 6','Procurement 7','Procurement 8'],
+    'Manufacturing/Operations':['Manufacturing 1','Manufacturing 2','Manufacturing 3','Manufacturing 4','Manufacturing 5','Manufacturing 6','Manufacturing 7','Manufacturing 8'],
+    'Finance':['Finance 1','Finance 2','Finance 3','Finance 4','Finance 5','Finance 6','Finance 7','Finance 8'],
+    'Human Resources':['Human 1','Human 2','Human 3','Human 4','Human 5','Human 6','Human 7','Human 8'],
+    'Marketing':['Marketing 1','Marketing 2','Marketing 3','Marketing 4','Marketing 5','Marketing 6','Marketing 7','Marketing 8']
 };
 export default React.createClass({
 mixins: [PureRenderMixin],
 getInitialState() {
     return {
         mouserHover:false,
-        subCateGory:cateGoryObj['Category 1'],
+        subCateGory:cateGoryObj['Supply Chain'],
         category:cateGoryObj,
         selected:{},
-        userClickedCat:'Category 1'
+        userClickedCat:'Supply Chain'
     }
 },
 componentWillMount() {
@@ -58,7 +58,7 @@ categorySelection(e){
     this.setState({subCateGory:newSubCategory,userClickedCat:key});
 },
 createCategoryBtns(){
-    let category = ["Category 1","Category 2","Category 3","Category 4","Category 5","Category 6"];
+    let category = ["Supply Chain","Procurement","Manufacturing/Operations","Finance","Human Resources","Marketing"];
     let arr = [];
     let selected = this.state.selected;
     let cateGoryObj = this.state.category;
@@ -114,17 +114,14 @@ render() {
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
                 <section className="MainContent">
-                    <p>4 of 5</p>
+                    <p>5 of 5</p>
                 </section>
                 <center>
-                    <p className="heading">Areas of Interest</p>
+                    <p className="heading">More Areas of Interest</p>
                 </center>
                 <section className="MainContent">
                     <p>Select Areas of Interests from the Categories below.</p>
                 </section>
-                <center>
-                    <p className="subHeading">{this.props.userJobFunction}</p>
-                </center>
                 <center className="categoryBtn">
                     {this.createCategoryBtns()}
                 </center>

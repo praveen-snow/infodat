@@ -8,9 +8,9 @@ mixins: [PureRenderMixin],
 getInitialState() {
     return {
         mouserHover:false,
-        revenue:'600,000,000',
+        revenue:'$ 600,000,000 - $ 1,000,000,000',
         industry:this.props.industry,
-        employeeSize:'250'
+        employeeSize:'250 - 300'
     }
 },
 componentWillMount() {
@@ -30,7 +30,7 @@ render() {
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
                 <section className="MainContent">
-                    <p>3 of 4</p>
+                    <p>3 of 5</p>
                 </section>
                 <center>
                     <p className="heading">Company Information</p>
@@ -40,17 +40,17 @@ render() {
                     <div className="nonEditable value">{this.props.companyName}</div>
                 </section>
                 <section className="MainContent">
-                    <div key="rev" className="field col-lg-12">
-                        <input className={"noErrorField"} value={this.state.revenue} type="text" onChange={this.enterRevenue}/>
-                        <field-label>REVENUE</field-label>
-                    </div>
                     <div key="indus" className="field col-lg-12">
                         <input className={"noErrorField"} value={this.state.industry} type="text" onChange={this.enterIndustry}/>
                         <field-label>INDUSTRY</field-label>
                     </div>
+                    <div key="rev" className="field col-lg-12">
+                        <input className={"noErrorField"} value={this.state.revenue} type="text" onChange={this.enterRevenue}/>
+                        <field-label>REVENUE</field-label>
+                    </div>
                     <div key="indusEmp" className="field col-lg-12">
                         <input className={"noErrorField"} value={this.state.employeeSize} type="text" onChange={this.enterEmployeeSize}/>
-                        <field-label>INDUSTRY EMPLOYEE SIZE</field-label>
+                        <field-label>EMPLOYEE SIZE</field-label>
                     </div>
                 </section>
                 <center>
