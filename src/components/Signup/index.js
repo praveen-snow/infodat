@@ -4,7 +4,7 @@ import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 import { bindListener } from 'utils';
 
-let jobFunctionList = ['Supply Chain','Procurement','Manufacturing','IT','Finance','Human Resources','Marketing'];
+let jobFunctionList = ['Supply Chain','Procurement','Manufacturing','Information Technology','Finance','Human Resources','Marketing'];
 export default React.createClass({
   mixins: [PureRenderMixin],
   

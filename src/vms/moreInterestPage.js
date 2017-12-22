@@ -3,9 +3,12 @@ import React from 'react';
 const MoreInterestPageSC = function(store) {
     //Components
     const MoreInterestPage = require("components/MoreInterest");
+    let itMapper = {"Information Technology":"IT"};
+    let userJobFunction = store.getState().userInfo.userDetails.jobFunction;
+    userJobFunction = itMapper[userJobFunction] || userJobFunction;
     return (
 		<MoreInterestPage
-            userJobFunction={store.getState().userInfo.userDetails.jobFunction}
+            userJobFunction={userJobFunction}
             goToThankYouPage={(userInterest)=>{
                 store.dispatch({type:'SAVE_USER_AREA_MORE_INTEREST', payload: {
                     userInterest:userInterest
