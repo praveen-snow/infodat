@@ -24,9 +24,15 @@ const headerSC = function(store) {
                     }}
                 });
             }}
-
             currentListener={ (updater)=> {
                 store.subscribe(function() { updater(store.getState().navigator.current); });
+            }}
+            userDetailsListener={ (updater)=> {
+                store.subscribe(function() { updater
+                    (
+                        store.getState().userInfo.userDetails.userName
+                    ); 
+                });
             }}
 
             signIn={(id)=>{
