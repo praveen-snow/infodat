@@ -31,9 +31,8 @@ h3{
     float: left;
     width: auto;
     height: 7vh;
-    padding: 10px;
-    padding-top: 14px;
     cursor: pointer;
+    padding-right: 10px;
     .cartBorder{
         border-bottom: 3px solid #fff;
     }
@@ -47,13 +46,10 @@ h3{
     }
 }
 .AllCateGory {
-    max-height: auto;
-    padding-bottom: 2%;
     .wrapper{
         height: auto;
         overflow: auto;
         width: 100%;
-        padding-top: 1%;
         padding-bottom: 1%;
     }
     .subCateGory {
@@ -61,15 +57,14 @@ h3{
         .flexFlow {
             width: 100%;
             float: left;
+            height: 33vh;
+            overflow: auto;
         }
         .subWrapper{
-            widows: 100%;
             .subCategory {
-                height: 93px;
                 width: 21%;
                 margin: auto;
                 background: #fff;
-                margin-right: 10px;
                 margin-left: 22px;
                 float: left;
                 margin-bottom: 5px;

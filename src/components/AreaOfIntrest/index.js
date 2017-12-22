@@ -3,12 +3,12 @@ import React from 'react';
 import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 let cateGoryObj = {
-    'Category 1':['Sub Category 1.1','Sub Category 1.2','Sub Category 1.3','Sub Category 1.4','Sub Category 1.5','Sub Category 1.6','Sub Category 1.7','Sub Category 1.8'],
-    'Category 2':['Sub Category 2.1','Sub Category 2.2','Sub Category 2.3','Sub Category 2.4','Sub Category 2.5','Sub Category 2.6','Sub Category 2.7','Sub Category 2.8'],
-    'Category 3':['Sub Category 3.1','Sub Category 3.2','Sub Category 3.3','Sub Category 3.4','Sub Category 3.5','Sub Category 3.6','Sub Category 3.7','Sub Category 3.8'],
-    'Category 4':['Sub Category 4.1','Sub Category 4.2','Sub Category 4.3','Sub Category 4.4','Sub Category 4.5','Sub Category 4.6','Sub Category 4.7','Sub Category 4.8'],
-    'Category 5':['Sub Category 5.1','Sub Category 5.2','Sub Category 5.3','Sub Category 5.4','Sub Category 5.5','Sub Category 5.6','Sub Category 5.7','Sub Category 5.8'],
-    'Category 6':['Sub Category 6.1','Sub Category 6.2','Sub Category 6.3','Sub Category 6.4','Sub Category 6.5','Sub Category 6.6','Sub Category 6.7','Sub Category 6.8']
+    'Category 1':['Sub Category 1.1','Sub Category 1.2','Sub Category 1.3','Sub Category 1.4','Sub Category 1.5','Sub Category 1.6','Sub Category 1.7','Sub Category 1.8','Sub Category 1.9'],
+    'Category 2':['Sub Category 2.1','Sub Category 2.2','Sub Category 2.3','Sub Category 2.4','Sub Category 2.5','Sub Category 2.6','Sub Category 2.7','Sub Category 2.8','Sub Category 2.8'],
+    'Category 3':['Sub Category 3.1','Sub Category 3.2','Sub Category 3.3','Sub Category 3.4','Sub Category 3.5','Sub Category 3.6','Sub Category 3.7','Sub Category 3.8','Sub Category 3.8'],
+    'Category 4':['Sub Category 4.1','Sub Category 4.2','Sub Category 4.3','Sub Category 4.4','Sub Category 4.5','Sub Category 4.6','Sub Category 4.7','Sub Category 4.8','Sub Category 4.8'],
+    'Category 5':['Sub Category 5.1','Sub Category 5.2','Sub Category 5.3','Sub Category 5.4','Sub Category 5.5','Sub Category 5.6','Sub Category 5.7','Sub Category 5.8','Sub Category 5.8'],
+    'Category 6':['Sub Category 6.1','Sub Category 6.2','Sub Category 6.3','Sub Category 6.4','Sub Category 6.5','Sub Category 6.6','Sub Category 6.7','Sub Category 6.8','Sub Category 6.8']
 };
 export default React.createClass({
 mixins: [PureRenderMixin],
