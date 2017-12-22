@@ -13,7 +13,9 @@ const signupVM = function(store) {
       }
     });
   }
+  let bannedDomains = ["spam.com", "junk.com","gmail.com","outlook.com"];
   return (<Signup 
+    bannedDomains={bannedDomains}
     close={() => {
       store.dispatch({
         type: 'NAV_SET_ROUTE_STACK_BASE',

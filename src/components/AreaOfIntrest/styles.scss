@@ -1,12 +1,13 @@
 @import "../../styles/_common";
 
 .ModalWrap{
-    width: auto !important;
+    width: 90% !important;
 }
 .subHeading{
     font-size: 20px;
 }
 .MainContent{
+    width: 575px !important;
     p{
         padding: 0px !important;
     }
@@ -57,20 +58,21 @@ h3{
         .flexFlow {
             width: 100%;
             float: left;
-            height: 33vh;
+            height: 45vh;
             overflow: auto;
         }
         .subWrapper{
+            padding: 1%;
             .subCategory {
-                width: 21%;
+                width: 15%;
                 margin: auto;
                 background: #fff;
-                margin-left: 22px;
+                margin-left: 1%;
                 float: left;
                 margin-bottom: 5px;
                 color: #000;
                 text-align: center;
-                padding: 4%;
+                padding: 3%;
             }
             .selected{
                 background-color: #0091f8;

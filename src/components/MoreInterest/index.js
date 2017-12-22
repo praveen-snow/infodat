@@ -5,7 +5,8 @@ import PureRenderMixin  from 'react-addons-pure-render-mixin';
 let cateGoryObj = {
     'Supply Chain':['Supply 1','Supply 2','Supply 3','Supply 4','Supply 5','Supply 6','Supply 7','Supply 8'],
     'Procurement':['Procurement 1','Procurement 2','Procurement 3','Procurement 4','Procurement 5','Procurement 6','Procurement 7','Procurement 8'],
-    'Manufacturing/Operations':['Manufacturing 1','Manufacturing 2','Manufacturing 3','Manufacturing 4','Manufacturing 5','Manufacturing 6','Manufacturing 7','Manufacturing 8'],
+    'Manufacturing':['Manufacturing 1','Manufacturing 2','Manufacturing 3','Manufacturing 4','Manufacturing 5','Manufacturing 6','Manufacturing 7','Manufacturing 8'],
+    'IT':['IT 1','IT 2','IT 3','IT 4','IT 5','IT 6','IT 7','IT 8'],
     'Finance':['Finance 1','Finance 2','Finance 3','Finance 4','Finance 5','Finance 6','Finance 7','Finance 8'],
     'Human Resources':['Human 1','Human 2','Human 3','Human 4','Human 5','Human 6','Human 7','Human 8'],
     'Marketing':['Marketing 1','Marketing 2','Marketing 3','Marketing 4','Marketing 5','Marketing 6','Marketing 7','Marketing 8']
@@ -13,12 +14,15 @@ let cateGoryObj = {
 export default React.createClass({
 mixins: [PureRenderMixin],
 getInitialState() {
+    let userJobFunction = this.props.userJobFunction;
+    delete cateGoryObj[userJobFunction];
+    let keys = Object.keys(cateGoryObj);
     return {
         mouserHover:false,
-        subCateGory:cateGoryObj['Supply Chain'],
+        subCateGory:cateGoryObj[keys[0]],
         category:cateGoryObj,
         selected:{},
-        userClickedCat:'Supply Chain'
+        userClickedCat:keys[0]
     }
 },
 componentWillMount() {
@@ -58,7 +62,9 @@ categorySelection(e){
     this.setState({subCateGory:newSubCategory,userClickedCat:key});
 },
 createCategoryBtns(){
-    let category = ["Supply Chain","Procurement","Manufacturing/Operations","Finance","Human Resources","Marketing"];
+    let category = ["Supply Chain","Procurement","Manufacturing","IT","Finance","Human Resources","Marketing"];
+    let userJobFunction = this.props.userJobFunction;
+    category = category.filter(ujf => ujf !== userJobFunction);
     let arr = [];
     let selected = this.state.selected;
     let cateGoryObj = this.state.category;
@@ -104,7 +110,6 @@ goToThankYouPage(){
             }
         }
     }
-    //console.log(userInterest);
     this.props.goToThankYouPage(userInterest);
 },
 render() {
@@ -117,10 +122,10 @@ render() {
                     <p>5 of 5</p>
                 </section>
                 <center>
-                    <p className="heading">More Areas of Interest</p>
+                    <p className="heading">Cross-Functional Areas of Interest</p>
                 </center>
                 <section className="MainContent">
-                    <p>Select Areas of Interests from the Categories below.</p>
+                    <p>Select Areas of Interests from the Categories below. Each category contains different areas of interest.</p>
                 </section>
                 <center className="categoryBtn">
                     {this.createCategoryBtns()}

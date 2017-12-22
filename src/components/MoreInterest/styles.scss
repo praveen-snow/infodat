@@ -1,12 +1,13 @@
 @import "../../styles/_common";
 
 .ModalWrap{
-    width: auto !important;
+    width: 90% !important;
 }
 .subHeading{
     font-size: 20px;
 }
 .MainContent{
+    width: 575px !important;
     p{
         padding: 0px !important;
     }
@@ -25,6 +26,10 @@ h3{
 }
 .next {
     margin-left: 25px;
+}
+.categoryBtn {
+    margin: auto;
+    width: 87%;
 }
 .cateGory {
     height: auto;
@@ -47,13 +52,10 @@ h3{
     }
 }
 .AllCateGory {
-    max-height: auto;
-    padding-bottom: 2%;
     .wrapper{
         height: auto;
         overflow: auto;
         width: 100%;
-        padding-top: 1%;
         padding-bottom: 1%;
     }
     .subCateGory {
@@ -61,21 +63,21 @@ h3{
         .flexFlow {
             width: 100%;
             float: left;
+            height: 35vh;
+            overflow: auto;
         }
         .subWrapper{
-            widows: 100%;
+            padding: 1%;
             .subCategory {
-                height: 93px;
-                width: 21%;
+                width: 15%;
                 margin: auto;
                 background: #fff;
-                margin-right: 10px;
-                margin-left: 22px;
+                margin-left: 1%;
                 float: left;
                 margin-bottom: 5px;
                 color: #000;
                 text-align: center;
-                padding: 4%;
+                padding: 3%;
             }
             .selected{
                 background-color: #0091f8;

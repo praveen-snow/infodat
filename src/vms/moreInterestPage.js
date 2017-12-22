@@ -5,8 +5,9 @@ const MoreInterestPageSC = function(store) {
     const MoreInterestPage = require("components/MoreInterest");
     return (
 		<MoreInterestPage
+            userJobFunction={store.getState().userInfo.userDetails.jobFunction}
             goToThankYouPage={(userInterest)=>{
-                store.dispatch({type:'SAVE_USER_AREA_INTEREST', payload: {
+                store.dispatch({type:'SAVE_USER_AREA_MORE_INTEREST', payload: {
                     userInterest:userInterest
                     }
                 });
