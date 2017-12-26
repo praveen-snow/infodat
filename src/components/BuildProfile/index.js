@@ -18,7 +18,9 @@ componentWillUnmount() {
 getStarted(){
     this.props.getStarted();
 },
-  
+goToViewProfilePage(){
+    this.props.goToViewProfilePage();
+},
 render() {
     let submitEnabled = ( this.state.passwordSuccess && this.state.confirmPasswordSuccess && this.state.secQuestion !== '' && this.state.secAnswerSuccess ) ? "submitBtn EnableBtn" : "submitBtn DisableBtn";
     return (
@@ -34,7 +36,7 @@ render() {
                     <button className="getStarted" onClick={this.getStarted}>GET STARTED</button>
                 </center>
                 <center>
-                    <label className="skip">Skip the steps</label>
+                    <label onClick={this.goToViewProfilePage} className="skip">Skip the steps</label>
                 </center>
             </div>
         </div>

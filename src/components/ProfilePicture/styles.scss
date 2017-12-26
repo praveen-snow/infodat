@@ -18,7 +18,7 @@
     
     .ModalWrap {
         position: relative;
-        width: 70%;
+        width: 100%;
         height: 70vh;
         background: #5b5b5f;
         @include respond(medium) {

@@ -13,7 +13,9 @@ const signupVM = function(store) {
       }
     });
   }
+  let bannedDomains = ["spam.com", "junk.com","gmail.com","outlook.com"];
   return (<Signup 
+    bannedDomains={bannedDomains}
     close={() => {
       store.dispatch({
         type: 'NAV_SET_ROUTE_STACK_BASE',
@@ -44,17 +46,11 @@ const signupVM = function(store) {
           userDetails:userDetailsObj
         }
       });
-
-
-      store.dispatch({
-        type: 'NAV_SET_ROUTE_STACK_BASE',
-        payload: {
-          history: [],
-          current: {
-            pendingApprovalPage: true
-          }
+      store.dispatch({type:'NAV_PUSH_BASE', payload: {
+        current: {
+          pendingApprovalPage:  true,
         }
-      });
+      }});
     }}
     />);
 }

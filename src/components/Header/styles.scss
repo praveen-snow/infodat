@@ -38,6 +38,24 @@
         float: right;
         text-align: right
       }
+      i.fa.fa-user-circle-o {
+          font-size: 42px;
+          margin-top: 22px;
+          color: #868e96;
+      }
+      button.userName {
+        font-size: 26px;
+        margin-left: 15px;
+        margin-right: 20px;
+        position: relative;
+        bottom: 10px;
+        outline: none;
+        color: #5b5b5f;
+      }
+      .button:focus {
+        outline: none;
+      }
+
       a#SignIn {
           font-size: 22px;
           margin-right: 20px;

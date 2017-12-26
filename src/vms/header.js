@@ -17,16 +17,21 @@ const headerSC = function(store) {
     return (
         <Header
             navSignUpForm={()=>{
-                store.dispatch({type:'NAV_SET_ROUTE_STACK_BASE', payload:{
-                    history: [],
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
-                        signup: true
-                    }}
-                });
+                        buildProfilePage:  true,
+                    }
+                }});
             }}
-
             currentListener={ (updater)=> {
                 store.subscribe(function() { updater(store.getState().navigator.current); });
+            }}
+            userDetailsListener={ (updater)=> {
+                store.subscribe(function() { updater
+                    (
+                        store.getState().userInfo.userDetails.userName
+                    ); 
+                });
             }}
 
             signIn={(id)=>{

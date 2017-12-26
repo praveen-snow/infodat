@@ -15,6 +15,7 @@ const ProfilePictureSC = function(store) {
     return (
 		<ProfilePicture
             goToPersonalInfoPage={()=>{
+                store.dispatch({type:'NAV_RESET_CHNAGE_DIRECTIONS'});
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
                         personalInfoPage:  true,

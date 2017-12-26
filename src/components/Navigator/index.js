@@ -43,6 +43,7 @@ export default React.createClass({
         modal: undefined,
         alert: undefined,
         overlay: undefined,
+        enter:undefined
     }; },
 
     componentDidMount() {
@@ -57,21 +58,22 @@ export default React.createClass({
 				// @endif
 				) return;
             this.setState({
-          elements: Object.assign(
-                    {
-                        backdrop: true
-                    },
-                    state.current.header === false ? {} :{
-                        header:true
-                    },
-                    state.current
-                ),
-				// @ifdef DEBUG
-                debug: state.debug,
-				// @endif
-                modal: state.modal,
-                alert: state.alert,
-                overlay: state.overlay,
+                    elements: Object.assign(
+                        {
+                            backdrop: true
+                        },
+                        state.current.header === false ? {} :{
+                            header:true
+                        },
+                        state.current
+                    ),
+                    // @ifdef DEBUG
+                    debug: state.debug,
+                    // @endif
+                    modal: state.modal,
+                    alert: state.alert,
+                    overlay: state.overlay,
+                    enter:state.enter
             });
             if (typeof(state) === 'undefined' || typeof(state.current) === 'undefined') {
                 console.warn('Invalid nav request [', state, '] [', this.state, ']');
@@ -118,7 +120,7 @@ export default React.createClass({
     willEnter(key) {
         /* Cache the element so it can be refrenced instead of recreated on every loop */
         this.elementCache[key] = this.props.sceneConfigurations[key].VM(this.props.store);
-        return Object.assign({}, defaultStyles, this.props.sceneConfigurations[key].Enter);
+        return Object.assign({}, defaultStyles, this.state.enter ? this.state.enter : this.props.sceneConfigurations[key].Enter);
     },
 
     willLeave(key, style, value, currentSpeed) {

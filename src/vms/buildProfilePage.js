@@ -12,6 +12,16 @@ const BuildProfileSC = function(store) {
                     }
                 }});
             }}
+            goToViewProfilePage={()=>{
+                store.dispatch({type:'NAV_RESET_CHNAGE_DIRECTIONS'});
+                store.dispatch({type:'NAV_SET_ROUTE_STACK_BASE', payload:{
+                    history: [],
+                        current: {
+                            userProfilePage: true
+                        }
+                    }
+                });
+            }}
         />
 	);
 

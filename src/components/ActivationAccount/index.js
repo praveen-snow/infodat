@@ -30,6 +30,9 @@ componentWillUnmount() {
 showMenu(){
     this.setState({showMenu:!this.state.showMenu});
 },
+antiFocus(){
+    this.setState({showMenu:false});
+},
 userPassword(e){
     let value = e.target.value;
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
@@ -154,7 +157,9 @@ return (
                   <div className="field col-lg-12">
                     <div className="form-check">
                         <label className="form-check-label">
-                            <input  autoComplete="off" onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
+                            <input  onBlur={()=>{
+                                setTimeout(this.antiFocus, 100);
+                                }} autoComplete="off" onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
                             <span className="fa fa-caret-down downArrow"></span>
                             <field-label>SECURITY QUESTION<sup>*</sup></field-label>
                             { this.state.showMenu ? (<ul className="dropDownList">
