@@ -1,0 +1,34 @@
+Data Modeling Quatrz The Network
+
+User Account Activation Collection
+{"_id":"5a41e3f4a21fe31d36605b87","userId":"","passWord":"","userSecurityQuestion":{"question":"","answer":""}}
+
+User Area of interest Collection
+{"_id":"5a41e6b2a21fe31d36605b8c","userId":"","areaInterest":{"selectedJobFunction":["selectedJobFunction1","selectedJobFunction2"]},"moreInterest":{"jobFunction1":["jobFunction1.1","jobFunction1.2"]}}
+
+User Company Info Collection
+{"_id":"5a41e659a21fe31d36605b8b","userId":"","company":{"industry":"","revenue":"","employeSize":""}}
+
+User Info Collection
+{"_id":"5a41e094a21fe31d36605b85","invitationCode":"","userFullName":{"firstName":"","lastName":""},"workEmail":"","company":{"companyName":"","companyWebSite":""},"job":{"jobFunction":"","jobTitle":""},"userPhoneNumber":{"phoneNumber":"","ext":""},"PreviousWorkEmail":""}
+
+User Personal Info
+{"_id":"5a41e55fa21fe31d36605b8a","userId":"","workExperiance":[{"title":"","from":"","to":"","bio":"","active":true,"company":""}]}
+
+User Profile Picture
+{"_id":"5a41e49ca21fe31d36605b89","userId":"","profileImage":"","pictureProperty":{"zoom":"","rotateAngle":"","imageCrop":{"x":"","y":""}}}
+
+Admin Info Collection
+Need to discuss
+
+Admin Metric Collection
+This collection has the all information of the admin logs
+
+User Metric Collection
+This collection has the all information of the user logs
+
+User App Navigator Collection
+This collection has each user's steps for building profile
+
+User Payment Info Collection
+This collection has the user's payment info like subscription infomations
