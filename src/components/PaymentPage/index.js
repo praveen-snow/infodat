@@ -69,7 +69,11 @@ render() {
                     <p>In order to get started, please provide your payment info. As promised, your first 3 months will be on us!</p>
                 </section>
                 <center>
-                    <img className="paymentImg" src="assets/png/payment.png"></img>
+                    <div className="checkout-txt">
+                        <span className="dollar-sign">$</span>
+                        <span className="payment-price">990</span>
+                        <span className="year-sign">/year</span>
+                    </div>
                 </center>
                 <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
                     <Elements>

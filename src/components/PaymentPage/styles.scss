@@ -72,6 +72,27 @@
         box-shadow: none;
         width: 100%;
       }
+      .checkout-txt{
+        .dollar-sign {
+            font-family: 'Avenir', sans-serif;
+            font-size: 25px;
+            margin-top: 5px;
+            display: inline-block;
+            position: absolute;
+            margin-left: -15px;
+        }
+
+        .payment-price {
+            font-family: 'Avenir', sans-serif;
+            font-size: 42px;
+        }
+
+        .year-sign {
+            font-family: 'Avenir', sans-serif;
+            font-size: 24px;
+            margin-right: -20px;
+        }
+        }
       .strpeEle{
         width: 60%;
         margin: auto;
