@@ -14,6 +14,7 @@ const MoreInterestPageSC = function(store) {
                     userInterest:userInterest
                     }
                 });
+                store.dispatch({type:'NAV_RESET_CHNAGE_DIRECTIONS'});
                 store.dispatch({type:'NAV_REPLACE_AT_INDEX_BASE', payload: {
                         index:0,
                         current: {
@@ -23,8 +24,13 @@ const MoreInterestPageSC = function(store) {
                 });
             }}
             goBack={()=>{
-                store.dispatch({type:'NAV_POP_BASE'});
-                store.dispatch({type:'NAV_POP_BASE'});
+                store.dispatch({type:'NAV_CHNAGE_DIRECTIONS'});
+                store.dispatch({type:'NAV_PUSH_BASE', payload: {
+                    current: {
+                        areasIntrestPage: true
+                    }
+                }});
+                //store.dispatch({type:'NAV_POP_BASE'});
             }}
         />
 	);

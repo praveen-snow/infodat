@@ -13,9 +13,7 @@ export function bootstrap(store) {
                 return;
         });
         store.dispatch({type:'NAV_SET_ROUTE_STACK_BASE', payload:{
-            history: [{
-                backdrop: true
-            }],
+            history: [],
             current: {
                 backdrop: true
             }

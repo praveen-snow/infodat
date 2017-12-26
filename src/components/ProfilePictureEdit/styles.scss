@@ -16,11 +16,12 @@
   /* Fix for iOS & Safari */
   .ModalWrap {
     position: relative;
-    width: 50%;
+    width: 60%;
     box-shadow: 0 0 5px 0;
     background: #ffffff;
     z-index: 9999;
-    bottom: 10%;
+    height: auto;
+    padding-bottom: 1%;
     @include respond(medium) {
       width: 60%;
     }
@@ -29,8 +30,46 @@
       box-shadow: none;
       width: 100%;
     }
+    .getStarted{
+      color: #fff;
+      width: 260px;
+      font-size: 18px;
+      height: 58px;
+      border-radius: 4px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .next{
+        background-color: #0091f8;
+    }
+    .previous{
+        background-color: #c2c3c2;
+    }
+    .DisableBtn{
+        background-color: #c2c3c2;
+    }
+    .previous:hover{
+        background-color: #0091f8;
+    }
+
+    .imageClicker{
+      width: 350px;
+      height: 350px;
+    }
+    .uploadImage{
+      display: none;
+    }
     .Heading{
       font-size: 26px;
+    }
+    .imageAction{
+      display: flex;
+      text-align: center;
+      i.fa{
+        font-size: 24px;
+        color: #ccc;
+      }
     }
     .editAbles{
       width: 100%;
@@ -58,9 +97,17 @@
       margin-top: 10px;
       margin-bottom: 10px;
     }
+    .rangeslider-horizontal {
+      height: 2px;
+    }
+    .rangeslider-horizontal .rangeslider__fill {
+      height: 100%;
+      background-color: #333;
+    }
     .MainContent {
       padding: 2%;
       padding-top: 0;
+      text-align: center;
       h1{
         font-size: 18pt;
         padding: 25px;

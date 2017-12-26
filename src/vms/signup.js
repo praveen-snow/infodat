@@ -46,17 +46,11 @@ const signupVM = function(store) {
           userDetails:userDetailsObj
         }
       });
-
-
-      store.dispatch({
-        type: 'NAV_SET_ROUTE_STACK_BASE',
-        payload: {
-          history: [],
-          current: {
-            pendingApprovalPage: true
-          }
+      store.dispatch({type:'NAV_PUSH_BASE', payload: {
+        current: {
+          pendingApprovalPage:  true,
         }
-      });
+      }});
     }}
     />);
 }
