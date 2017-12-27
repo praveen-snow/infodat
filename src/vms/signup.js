@@ -1,4 +1,5 @@
 import React from 'react';
+import { emailList } from 'utils/common';
 
 const signupVM = function(store) {
   //Components
@@ -13,7 +14,7 @@ const signupVM = function(store) {
       }
     });
   }
-  let bannedDomains = ["spam.com", "junk.com","gmail.com","outlook.com"];
+  let bannedDomains = emailList();
   return (<Signup 
     bannedDomains={bannedDomains}
     close={() => {
