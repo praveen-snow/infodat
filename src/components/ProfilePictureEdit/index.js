@@ -6,6 +6,7 @@ import PureRenderMixin  from 'react-addons-pure-render-mixin';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import AvatarEditor from 'react-avatar-editor'
+import ImageCapture from 'components/ProfilePictureCapture';
 
 export default React.createClass({
 mixins: [PureRenderMixin],
@@ -16,7 +17,8 @@ getInitialState() {
         zoom:1.2,
         rotate:0,
         image:'',
-        mouserHover:false
+        mouserHover:false,
+        captureImage:true
     }
 },
 componentWillMount() {
@@ -55,6 +57,9 @@ imageRotate(){
     }
     this.setState({rotate:rotate})
 },
+captureImage(){
+    this.setState({captureImage:!this.state.captureImage});
+},
 render() {
     let nextClass = this.state.mouserHover ? "getStarted next DisableBtn" : "getStarted next";
     return (
@@ -66,7 +71,7 @@ render() {
                     <h2 className="Heading">Upload Profile Image</h2>
                     <center>
                         <div className="imageClicker">
-                            <AvatarEditor
+                            { this.state.captureImage ? <AvatarEditor
                                 image="assets/png/pic.jpg"
                                 width={250}
                                 height={250}
@@ -75,12 +80,13 @@ render() {
                                 scale={this.state.zoom}
                                 rotate={this.state.rotate}
                                 disableDrop={false}
-                            />
+                            /> : <ImageCapture/> }
                             <input
                                 type="file"
                                 ref={input => this.inputElement = input}
                                 className = {"uploadImage"}
                                 onChange={this.imageUpload}
+                                accept="image/*"
                             />
                         </div>
                     </center>
@@ -113,13 +119,13 @@ render() {
                         </div>
                         <div style={{display:'flex'}}className="col-sm imageAction">
                             <div className="col-sm">
-                                <i onClick={()=>{return}} className="fa fa-crop" aria-hidden="true"></i>
-                                <br/>
-                                Crop
-                            </div>
-                            <div className="col-sm">
                                 <i onClick={this.imageRotate} className="fa fa-repeat" aria-hidden="true"></i>
                                 Rotate
+                            </div>
+                            <div className="col-sm">
+                                <i onClick={this.captureImage} className="fa fa-camera" aria-hidden="true"></i>
+                                <br/>
+                                Capture
                             </div>
                             <div className="col-sm">
                                 <i onClick={this.loadImage} className="fa fa-upload" aria-hidden="true"></i>

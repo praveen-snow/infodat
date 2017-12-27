@@ -76,6 +76,7 @@ render() {
                                 ref={input => this.inputElement = input}
                                 className = {"uploadImage"}
                                 onChange={this.imageUpload}
+                                accept="image/*"
                             />
                         </div>
                     </center>

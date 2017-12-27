@@ -89,6 +89,9 @@ submit(){
     if(me.passWord === '' && me.confirmPassword === '' && me.secAnswer === '' && me.secQuestion === ''){
         return;
     } else {
+        if(me.passwordError || me.confirmPasswordError || me.secQuestionError || me.secAnswerError){
+            return;
+        }
         this.props.paymentPage();
     }
 },
