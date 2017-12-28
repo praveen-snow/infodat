@@ -63,7 +63,7 @@ categorySelection(e){
     this.setState({subCateGory:newSubCategory,userClickedCat:key});
 },
 createCategoryBtns(){
-    let category = ["Supply Chain","Procurement","Manufacturing","IT","Finance","Human Resources","Marketing"];
+    let category = ["Supply Chain","Procurement","Manufacturing","Leadership","Information Technology","Finance","Human Resources","Marketing"];
     let userJobFunction = this.props.userJobFunction;
     category = category.filter(ujf => ujf !== userJobFunction);
     let arr = [];
