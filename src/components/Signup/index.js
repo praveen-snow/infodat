@@ -413,133 +413,133 @@ export default React.createClass({
     this.setState({companySite:value});
   },
   submit(){
-    // let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    // if(this.state.tandc){
-    //   this.setState({tandcError:false});
-    // } else {
-    //   this.setState({tandcError:true});
-    // }
+    let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    if(this.state.tandc){
+      this.setState({tandcError:false});
+    } else {
+      this.setState({tandcError:true});
+    }
 
-    // if(this.state.phoneExtNumber === ''){
-    //   this.setState({phoneNumberError:true});
-    // }else{
-    //   this.setState({phoneNumberError:false});
-    // }
+    if(this.state.phoneExtNumber === ''){
+      this.setState({phoneNumberError:true});
+    }else{
+      this.setState({phoneNumberError:false});
+    }
 
-    // this.setState({invitationNumberError:false});
+    this.setState({invitationNumberError:false});
 
-    // if(this.state.fName.length <= 2){
-    //   this.setState({fullNameError:true});
-    // }else{
-    //   this.setState({fullNameError:false});
-    // }
+    if(this.state.fName.length <= 2){
+      this.setState({fullNameError:true});
+    }else{
+      this.setState({fullNameError:false});
+    }
 
-    // if(this.state.lName.length <= 2){
-    //   this.setState({fullNameError:true});
-    // }else{
-    //   this.setState({fullNameError:false});
-    // }
+    if(this.state.lName.length <= 2){
+      this.setState({fullNameError:true});
+    }else{
+      this.setState({fullNameError:false});
+    }
 
-    // if(this.state.wEmail === ''){
-    //   this.setState({wEmailError:true});
-    // }else{
-    //   if(emailRegex.test(this.state.wEmail)){
-    //     this.setState({wEmailError:false});
-    //   }else{
-    //     this.setState({wEmailError:true});
-    //   }
-    // }
+    if(this.state.wEmail === ''){
+      this.setState({wEmailError:true});
+    }else{
+      if(emailRegex.test(this.state.wEmail)){
+        this.setState({wEmailError:false});
+      }else{
+        this.setState({wEmailError:true});
+      }
+    }
 
-    // if(this.state.company === ''){
-    //   this.setState({companyError:true});
-    // }else{
-    //   this.setState({companyError:false});
-    // }
+    if(this.state.company === ''){
+      this.setState({companyError:true});
+    }else{
+      this.setState({companyError:false});
+    }
 
-    // if(this.state.jTitle === ''){
-    //   this.setState({jTitleError:true});
-    // }else{
-    //   this.setState({jTitleError:false});
-    // }
+    if(this.state.jTitle === ''){
+      this.setState({jTitleError:true});
+    }else{
+      this.setState({jTitleError:false});
+    }
 
-    // if(this.state.jFunction === ''){
-    //   this.setState({jFunctionError:true});
-    // }else{
-    //   this.setState({jFunctionError:false});
-    // }
+    if(this.state.jFunction === ''){
+      this.setState({jFunctionError:true});
+    }else{
+      this.setState({jFunctionError:false});
+    }
 
-    // if(this.state.companySite === ''){
-    //   this.setState({companySiteError:true});
-    // }else{
-    //   let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
-    //   let regex = new RegExp(expression);
-    //   if(regex.test(this.state.companySite)){
-    //     this.setState({companySiteError:false});
-    //   }else{
-    //     this.setState({companySiteError:true});
-    //   }
-    // }
+    if(this.state.companySite === ''){
+      this.setState({companySiteError:true});
+    }else{
+      let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
+      let regex = new RegExp(expression);
+      if(regex.test(this.state.companySite)){
+        this.setState({companySiteError:false});
+      }else{
+        this.setState({companySiteError:true});
+      }
+    }
 
-    // if(this.state.previousMember){
-    //   if(this.state.oldMember === ''){
-    //     this.setState({oldMemberError:true});
-    //   }else{
-    //     if(emailRegex.test(this.state.oldMember)){
-    //       this.setState({oldMemberError:false,oldMemberSuccess:true});
-    //     }else{
-    //       this.setState({oldMemberError:true,oldMemberSuccess:false});
-    //     }
-    //   }
-    // }
+    if(this.state.previousMember){
+      if(this.state.oldMember === ''){
+        this.setState({oldMemberError:true});
+      }else{
+        if(emailRegex.test(this.state.oldMember)){
+          this.setState({oldMemberError:false,oldMemberSuccess:true});
+        }else{
+          this.setState({oldMemberError:true,oldMemberSuccess:false});
+        }
+      }
+    }
 
     let me = {...this.state};
     let userDetailsObj = {};
     if(!me.tandc){
       return;
     }
-    // if(this.state.previousMember){
-    //   if(this.state.oldMember === ''){
-    //     return;
-    //   }
-    // }
-    // if(!me.companySiteError && !me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-    //   if(me.companySite.length === 0 && me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
-    //     return;
-    //   } else {
-    //     if(this.state.tandcError){
-    //       return;
-    //     }else{
-    //       userDetailsObj.invitationNumber = me.invitationNumber,
-    //       userDetailsObj.userName = me.fullName;
-    //       userDetailsObj.workEmail = me.wEmail;
-    //       userDetailsObj.company = me.company;
-    //       userDetailsObj.jobTitle = me.jTitle;
-    //       userDetailsObj.jobFunction = me.jFunction;
-    //       userDetailsObj.phoneNumber = me.phoneExtNumber;
-    //       userDetailsObj.oldEmail = me.oldMember;
-    //       userDetailsObj.companySite = me.companySite;
-    //       this.props.submit(userDetailsObj);
-    //     }
-    //   }
-    // } else if(me.companySiteError || me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
-    //   return;
-    // } else {
-    //   if(this.state.tandcError){
-    //     return;
-    //   }else{
-    //     userDetailsObj.invitationNumber = me.invitationNumber,
-    //     userDetailsObj.userName = me.fullName;
-    //     userDetailsObj.workEmail = me.wEmail;
-    //     userDetailsObj.company = me.company;
-    //     userDetailsObj.jobTitle = me.jTitle;
-    //     userDetailsObj.jobFunction = me.jFunction;
-    //     userDetailsObj.phoneNumber = me.phoneExtNumber;
-    //     userDetailsObj.oldEmail = me.oldMember;
-    //     userDetailsObj.companySite = me.companySite;
-    //     this.props.submit(userDetailsObj);
-    //   }
-    // }
-    this.props.submit(userDetailsObj);
+    if(this.state.previousMember){
+      if(this.state.oldMember === ''){
+        return;
+      }
+    }
+    if(!me.companySiteError && !me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
+      if(me.companySite.length === 0 && me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+        return;
+      } else {
+        if(this.state.tandcError){
+          return;
+        }else{
+          userDetailsObj.invitationNumber = me.invitationNumber,
+          userDetailsObj.userName = me.fullName;
+          userDetailsObj.workEmail = me.wEmail;
+          userDetailsObj.company = me.company;
+          userDetailsObj.jobTitle = me.jTitle;
+          userDetailsObj.jobFunction = me.jFunction;
+          userDetailsObj.phoneNumber = me.phoneExtNumber;
+          userDetailsObj.oldEmail = me.oldMember;
+          userDetailsObj.companySite = me.companySite;
+          this.props.submit(userDetailsObj);
+        }
+      }
+    } else if(me.companySiteError || me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
+      return;
+    } else {
+      if(this.state.tandcError){
+        return;
+      }else{
+        userDetailsObj.invitationNumber = me.invitationNumber,
+        userDetailsObj.userName = me.fullName;
+        userDetailsObj.workEmail = me.wEmail;
+        userDetailsObj.company = me.company;
+        userDetailsObj.jobTitle = me.jTitle;
+        userDetailsObj.jobFunction = me.jFunction;
+        userDetailsObj.phoneNumber = me.phoneExtNumber;
+        userDetailsObj.oldEmail = me.oldMember;
+        userDetailsObj.companySite = me.companySite;
+        this.props.submit(userDetailsObj);
+      }
+    }
+    //this.props.submit(userDetailsObj);
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;
