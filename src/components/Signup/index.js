@@ -4,7 +4,7 @@ import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 import { bindListener } from 'utils';
 
-let jobFunctionList = ['Supply Chain','Procurement','Manufacturing','Information Technology','Finance','Human Resources','Marketing'];
+let jobFunctionList = ['Supply Chain','Procurement','Manufacturing/Operations','Information Technology', 'Finance','Human Resources','Marketing'];
 export default React.createClass({
   mixins: [PureRenderMixin],
   
@@ -83,7 +83,8 @@ export default React.createClass({
   checkTandC(){
     this.setState({tandc:!this.state.tandc,tandcError:false});
   },
-  antiFocus(){
+  antiFocus(e){
+    e.preventDefault();
     let fullName = (this.state.fName + ' ' + this.state.lName);
     let tempObj = {};
     let noError = '';
@@ -117,9 +118,9 @@ export default React.createClass({
   onFocusNumber(){
     this.setState({splitPhoneNumber:true});
   },
-  onBlurControl(){
+  onBlurControl(e){
     this.setState({splitPhoneNumber:false});
-    this.antiFocus();
+    this.antiFocus(e);
   },
   createSplitNumber(){
     let phoneNumberStyle = {
@@ -210,9 +211,6 @@ export default React.createClass({
       }
       this.setState(tempObj);
   },
-  validateEmail(domain,bannedDomains){
-    return bannedDomains.indexOf(domain) >= 0;
-  },
   userInput(e){
     let refsValue = e.target.value;
     let key = e.target.id;
@@ -221,12 +219,9 @@ export default React.createClass({
     let success = '';
     let emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     let alphaSplRegex = new RegExp(/^[A-Za-z-_.,áéíóú¿¡üñ\s]+$/gi);
-    let bannedDomains = this.props.bannedDomains;
-    let domain = '';
-    let notValidEmail = '';
+
     if(refsValue){
       if(key === 'wEmail'){
-        domain = refsValue.split('@')[1];
         if(refsValue.length > 120){
           return;
         }
@@ -236,13 +231,6 @@ export default React.createClass({
           noError = key + 'Error';
           tempObj[noError] = false;
         } else {
-          noError = key + 'Error';
-          tempObj[noError] = true;
-          success = key + 'Success';
-          tempObj[success] = false;
-        }
-        notValidEmail = this.validateEmail(domain,bannedDomains);
-        if(notValidEmail){
           noError = key + 'Error';
           tempObj[noError] = true;
           success = key + 'Success';
@@ -425,133 +413,133 @@ export default React.createClass({
     this.setState({companySite:value});
   },
   submit(){
-    let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    if(this.state.tandc){
-      this.setState({tandcError:false});
-    } else {
-      this.setState({tandcError:true});
-    }
+    // let emailRegex  = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    // if(this.state.tandc){
+    //   this.setState({tandcError:false});
+    // } else {
+    //   this.setState({tandcError:true});
+    // }
 
-    if(this.state.phoneExtNumber === ''){
-      this.setState({phoneNumberError:true});
-    }else{
-      this.setState({phoneNumberError:false});
-    }
+    // if(this.state.phoneExtNumber === ''){
+    //   this.setState({phoneNumberError:true});
+    // }else{
+    //   this.setState({phoneNumberError:false});
+    // }
 
-    this.setState({invitationNumberError:false});
+    // this.setState({invitationNumberError:false});
 
-    if(this.state.fName.length <= 2){
-      this.setState({fullNameError:true});
-    }else{
-      this.setState({fullNameError:false});
-    }
+    // if(this.state.fName.length <= 2){
+    //   this.setState({fullNameError:true});
+    // }else{
+    //   this.setState({fullNameError:false});
+    // }
 
-    if(this.state.lName.length <= 2){
-      this.setState({fullNameError:true});
-    }else{
-      this.setState({fullNameError:false});
-    }
+    // if(this.state.lName.length <= 2){
+    //   this.setState({fullNameError:true});
+    // }else{
+    //   this.setState({fullNameError:false});
+    // }
 
-    if(this.state.wEmail === ''){
-      this.setState({wEmailError:true});
-    }else{
-      if(emailRegex.test(this.state.wEmail)){
-        this.setState({wEmailError:false});
-      }else{
-        this.setState({wEmailError:true});
-      }
-    }
+    // if(this.state.wEmail === ''){
+    //   this.setState({wEmailError:true});
+    // }else{
+    //   if(emailRegex.test(this.state.wEmail)){
+    //     this.setState({wEmailError:false});
+    //   }else{
+    //     this.setState({wEmailError:true});
+    //   }
+    // }
 
-    if(this.state.company === ''){
-      this.setState({companyError:true});
-    }else{
-      this.setState({companyError:false});
-    }
+    // if(this.state.company === ''){
+    //   this.setState({companyError:true});
+    // }else{
+    //   this.setState({companyError:false});
+    // }
 
-    if(this.state.jTitle === ''){
-      this.setState({jTitleError:true});
-    }else{
-      this.setState({jTitleError:false});
-    }
+    // if(this.state.jTitle === ''){
+    //   this.setState({jTitleError:true});
+    // }else{
+    //   this.setState({jTitleError:false});
+    // }
 
-    if(this.state.jFunction === ''){
-      this.setState({jFunctionError:true});
-    }else{
-      this.setState({jFunctionError:false});
-    }
+    // if(this.state.jFunction === ''){
+    //   this.setState({jFunctionError:true});
+    // }else{
+    //   this.setState({jFunctionError:false});
+    // }
 
-    if(this.state.companySite === ''){
-      this.setState({companySiteError:true});
-    }else{
-      let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
-      let regex = new RegExp(expression);
-      if(regex.test(this.state.companySite)){
-        this.setState({companySiteError:false});
-      }else{
-        this.setState({companySiteError:true});
-      }
-    }
+    // if(this.state.companySite === ''){
+    //   this.setState({companySiteError:true});
+    // }else{
+    //   let expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/gi;
+    //   let regex = new RegExp(expression);
+    //   if(regex.test(this.state.companySite)){
+    //     this.setState({companySiteError:false});
+    //   }else{
+    //     this.setState({companySiteError:true});
+    //   }
+    // }
 
-    if(this.state.previousMember){
-      if(this.state.oldMember === ''){
-        this.setState({oldMemberError:true});
-      }else{
-        if(emailRegex.test(this.state.oldMember)){
-          this.setState({oldMemberError:false,oldMemberSuccess:true});
-        }else{
-          this.setState({oldMemberError:true,oldMemberSuccess:false});
-        }
-      }
-    }
+    // if(this.state.previousMember){
+    //   if(this.state.oldMember === ''){
+    //     this.setState({oldMemberError:true});
+    //   }else{
+    //     if(emailRegex.test(this.state.oldMember)){
+    //       this.setState({oldMemberError:false,oldMemberSuccess:true});
+    //     }else{
+    //       this.setState({oldMemberError:true,oldMemberSuccess:false});
+    //     }
+    //   }
+    // }
 
     let me = {...this.state};
     let userDetailsObj = {};
     if(!me.tandc){
       return;
     }
-    if(this.state.previousMember){
-      if(this.state.oldMember === ''){
-        return;
-      }
-    }
-    if(!me.companySiteError && !me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
-      if(me.companySite.length === 0 && me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
-        return;
-      } else {
-        if(this.state.tandcError){
-          return;
-        }else{
-          userDetailsObj.invitationNumber = me.invitationNumber,
-          userDetailsObj.userName = me.fullName;
-          userDetailsObj.workEmail = me.wEmail;
-          userDetailsObj.company = me.company;
-          userDetailsObj.jobTitle = me.jTitle;
-          userDetailsObj.jobFunction = me.jFunction;
-          userDetailsObj.phoneNumber = me.phoneExtNumber;
-          userDetailsObj.oldEmail = me.oldMember;
-          userDetailsObj.companySite = me.companySite;
-          this.props.submit(userDetailsObj);
-        }
-      }
-    } else if(me.companySiteError || me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
-      return;
-    } else {
-      if(this.state.tandcError){
-        return;
-      }else{
-        userDetailsObj.invitationNumber = me.invitationNumber,
-        userDetailsObj.userName = me.fullName;
-        userDetailsObj.workEmail = me.wEmail;
-        userDetailsObj.company = me.company;
-        userDetailsObj.jobTitle = me.jTitle;
-        userDetailsObj.jobFunction = me.jFunction;
-        userDetailsObj.phoneNumber = me.phoneExtNumber;
-        userDetailsObj.oldEmail = me.oldMember;
-        userDetailsObj.companySite = me.companySite;
-        this.props.submit(userDetailsObj);
-      }
-    }
-    //this.props.submit(userDetailsObj);
+    // if(this.state.previousMember){
+    //   if(this.state.oldMember === ''){
+    //     return;
+    //   }
+    // }
+    // if(!me.companySiteError && !me.phoneNumberError && !me.fullNameError && !me.companyError && !me.jTitleError  && !me.jFunctionError  && !me.wEmailError ){
+    //   if(me.companySite.length === 0 && me.phoneExtNumber.length === 0 && me.fullName.trim().length === 0 && me.company.length === 0 && me.jTitle.length === 0 && me.jFunction.length === 0 && me.wEmail.length === 0){
+    //     return;
+    //   } else {
+    //     if(this.state.tandcError){
+    //       return;
+    //     }else{
+    //       userDetailsObj.invitationNumber = me.invitationNumber,
+    //       userDetailsObj.userName = me.fullName;
+    //       userDetailsObj.workEmail = me.wEmail;
+    //       userDetailsObj.company = me.company;
+    //       userDetailsObj.jobTitle = me.jTitle;
+    //       userDetailsObj.jobFunction = me.jFunction;
+    //       userDetailsObj.phoneNumber = me.phoneExtNumber;
+    //       userDetailsObj.oldEmail = me.oldMember;
+    //       userDetailsObj.companySite = me.companySite;
+    //       this.props.submit(userDetailsObj);
+    //     }
+    //   }
+    // } else if(me.companySiteError || me.phoneNumberError || me.fullNameError || me.companyError || me.jTitleError || me.jFunctionError  ||  me.wEmailError ){
+    //   return;
+    // } else {
+    //   if(this.state.tandcError){
+    //     return;
+    //   }else{
+    //     userDetailsObj.invitationNumber = me.invitationNumber,
+    //     userDetailsObj.userName = me.fullName;
+    //     userDetailsObj.workEmail = me.wEmail;
+    //     userDetailsObj.company = me.company;
+    //     userDetailsObj.jobTitle = me.jTitle;
+    //     userDetailsObj.jobFunction = me.jFunction;
+    //     userDetailsObj.phoneNumber = me.phoneExtNumber;
+    //     userDetailsObj.oldEmail = me.oldMember;
+    //     userDetailsObj.companySite = me.companySite;
+    //     this.props.submit(userDetailsObj);
+    //   }
+    // }
+    this.props.submit(userDetailsObj);
   },
   selectPrimaryJob(e){
     let value = e.currentTarget.dataset.id;
@@ -641,9 +629,7 @@ export default React.createClass({
                   <field-label>JOB TITLE<sup>*</sup></field-label>
                 </div>
                 <div className= "field col-lg-12">
-                  <input onBlur={()=>{
-                    setTimeout(this.antiFocus, 100);
-                    }} autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
+                  <input autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
                   <span onClick={this.showMenu} className="fa fa-caret-down downArrow"></span>
                   <field-label>PRIMARY JOB FUNCTION<sup>*</sup></field-label>
                   { this.state.showMenu ? (<ul className="dropDownList">
