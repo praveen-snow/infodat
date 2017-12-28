@@ -58,7 +58,7 @@ render() {
 						<field-label>TITLE</field-label>
 					</div>
 					<div className="clearfix"></div>
-					<div className="col-lg-12">	<span>From</span></div>
+					<div className="col-lg-12">	<div className="txtpadd">From</div></div>
 				    <div className="clearboth"></div>
 					<div className="field-txt col-lg-6">
 						<input className={"noErrorField"} id="jFunction" type="text" onChange={()=>{return}}/>
@@ -71,7 +71,7 @@ render() {
                         <field-label>YEAR</field-label>
 					</div>
 					<div className="clearfix"></div>
-					<div className="col-lg-12">	<span>To</span></div>
+					<div className="col-lg-12">	<div className="txtpadd">To</div></div>
 				    <div className="clearboth"></div>
 					<div className="field-txt col-lg-6">
 						<input className={"noErrorField"} id="jFunction" type="text" onChange={()=>{return}}/>
@@ -91,9 +91,11 @@ render() {
 						</div>
 					</div>
 					<div className="col-lg-12">
+					<div className="txtpadd">
 						<label id="addWork" onClick={this.editProfile} className="userName experiance addMore">
 							<i id="addWork" onClick={this.editProfile} className="fa fa-plus" aria-hidden="true"></i> Previous Work Experience
 						</label>
+					</div>
 					</div>
 					<div className="col-lg-6 field-txt">
 						<button className="previous" 
