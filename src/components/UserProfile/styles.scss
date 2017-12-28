@@ -11,6 +11,30 @@
 	z-index: -10;
 	top: 80px;
 	color: #818182;
+	.editcolor{
+		color: #0091f8;
+		font-weight: 600;
+	}
+	.edit-desc{
+		font-size: small;
+	}
+	.desc-block{
+		margin-top:15px;
+	}
+	.hrline{
+		border-bottom: 2px solid hsla(0,0%,89%,.71);
+		margin: 15px 0;
+	}
+	.clearfix {
+		clear:both;
+	}
+	.userName {
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.def-padd{
+		padding-top:20px;
+	}
 	.userProfile{
 		width: 70%;
 		left: 0;
