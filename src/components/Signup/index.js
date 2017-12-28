@@ -4,7 +4,7 @@ import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 import { bindListener } from 'utils';
 
-let jobFunctionList = ['Supply Chain','Procurement','Manufacturing','Information Technology','Finance','Human Resources','Marketing'];
+let jobFunctionList = ['Supply Chain','Procurement','Manufacturing/Operations','Information Technology', 'Finance','Human Resources','Marketing'];
 export default React.createClass({
   mixins: [PureRenderMixin],
   
@@ -83,7 +83,8 @@ export default React.createClass({
   checkTandC(){
     this.setState({tandc:!this.state.tandc,tandcError:false});
   },
-  antiFocus(){
+  antiFocus(e){
+    e.preventDefault();
     let fullName = (this.state.fName + ' ' + this.state.lName);
     let tempObj = {};
     let noError = '';
@@ -117,9 +118,9 @@ export default React.createClass({
   onFocusNumber(){
     this.setState({splitPhoneNumber:true});
   },
-  onBlurControl(){
+  onBlurControl(e){
     this.setState({splitPhoneNumber:false});
-    this.antiFocus();
+    this.antiFocus(e);
   },
   createSplitNumber(){
     let phoneNumberStyle = {
@@ -210,9 +211,6 @@ export default React.createClass({
       }
       this.setState(tempObj);
   },
-  validateEmail(domain,bannedDomains){
-    return bannedDomains.indexOf(domain) >= 0;
-  },
   userInput(e){
     let refsValue = e.target.value;
     let key = e.target.id;
@@ -221,12 +219,9 @@ export default React.createClass({
     let success = '';
     let emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     let alphaSplRegex = new RegExp(/^[A-Za-z-_.,áéíóú¿¡üñ\s]+$/gi);
-    let bannedDomains = this.props.bannedDomains;
-    let domain = '';
-    let notValidEmail = '';
+
     if(refsValue){
       if(key === 'wEmail'){
-        domain = refsValue.split('@')[1];
         if(refsValue.length > 120){
           return;
         }
@@ -236,13 +231,6 @@ export default React.createClass({
           noError = key + 'Error';
           tempObj[noError] = false;
         } else {
-          noError = key + 'Error';
-          tempObj[noError] = true;
-          success = key + 'Success';
-          tempObj[success] = false;
-        }
-        notValidEmail = this.validateEmail(domain,bannedDomains);
-        if(notValidEmail){
           noError = key + 'Error';
           tempObj[noError] = true;
           success = key + 'Success';
@@ -641,9 +629,7 @@ export default React.createClass({
                   <field-label>JOB TITLE<sup>*</sup></field-label>
                 </div>
                 <div className= "field col-lg-12">
-                  <input onBlur={()=>{
-                    setTimeout(this.antiFocus, 100);
-                    }} autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
+                  <input autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction} id="jFunction" onClick={this.showMenu} type="text" onChange={()=>{return}} required/>
                   <span onClick={this.showMenu} className="fa fa-caret-down downArrow"></span>
                   <field-label>PRIMARY JOB FUNCTION<sup>*</sup></field-label>
                   { this.state.showMenu ? (<ul className="dropDownList">
