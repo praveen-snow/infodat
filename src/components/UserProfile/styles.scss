@@ -11,6 +11,76 @@
 	z-index: -10;
 	top: 80px;
 	color: #818182;
+	.editcolor{
+		color: #0091f8!important;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	.profilePictureImage{
+		background:#ccc;
+		padding:110px 0;
+	}
+	.editSpan{
+		left: 50%;
+		top: 50%;
+		position: absolute;
+		margin-top: -20px;
+		margin-left: -20px;
+	}
+	h2{
+		font-family: 'Avenir-Light', sans-serif, Arial;
+		font-weight: 600;
+		font-size: 16px;
+		color: #818182;
+		padding-bottom: 20px;
+	}
+	h3{
+		font-family: 'Avenir-Light', sans-serif, Arial;
+		font-size: 16px;
+		margin-bottom: 25px;
+		text-transform: uppercase;
+	}
+	h4{
+		font-size: 15px;
+		font-weight: 600;
+	}
+	.interest-box{
+		border: 2px solid #ccc;
+		text-align: center;
+		padding: 8px;
+		font-size:14px;
+		margin-bottom:10px;
+	}
+	.companylogo
+	{
+		background: hsla(0,0%,89%,.71);
+		text-align: center;
+		padding: 50px;
+	}
+	.expname {
+		padding-bottom: 20px;
+		font-size: 14px;
+	}
+	.edit-desc{
+		font-size: 14px;
+	}
+	.desc-block{
+		margin-top:15px;
+	}
+	.hrline{
+		border-bottom: 2px solid hsla(0,0%,89%,.71);
+		margin: 15px 0;
+	}
+	.clearfix {
+		clear:both;
+	}
+	.userName {
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.def-padd{
+		padding-top:20px;
+	}
 	.userProfile{
 		width: 70%;
 		left: 0;

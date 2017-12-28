@@ -46,76 +46,177 @@ export default React.createClass({
   render() {
     return (
       <div className="appBackground">
-        <section className="userProfile">
-          <div className="profileWrapper">
-            <div className="userProfileWrapper">
-              <div className="logo">
-              
-              </div>
-              <div className="profilePicture">
-                <div className="profilePictureImage">
-                  <span className="editSpan"><i className="fa fa-pencil" id="editPicture" onClick={this.editProfile} aria-hidden="true"></i></span>
-                  <img src="assets/png/upload.png"></img>
-                </div>
-              </div>
-            </div>
-            <div className="userProfileWrapper">
-              <div className="workExperiance">
-                <span className="subHeader">PERSONAL INFO <i id="editPersonalnfo" onClick={this.editProfile} className="fa fa-pencil" aria-hidden="true"></i></span>
-                <div className="userPersonalInfo">
-                  <label className="userName">
-                    {this.props.userDetails.userName}
-                  </label>
-                  <span> {this.props.userDetails.jobTitle},  {this.props.userDetails.company}</span>
-                  <br/>
-                  <span>{this.props.userDetails.workEmail}</span>
-                  <span>{this.props.userDetails.phoneNumber}</span>
-                  <br/>
-                  <span>{this.props.userDetails.jobFunction}</span>
-                  <br/>
-                  <span>BIO</span>
-                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Vivamus ut feugiat risus. Donec ornare mauris vitae mauris euismod, 
-                    nec elementum est porta. Nulla non quam nunc. Sed sit amet magna ut dui molestie 
-                    dignissim id a nunc. Fusce ut libero sapien. Duis eu tempus mi. Nulla placerat, 
-                    augue vitae dignissim faucibus, tellus felis malesuada massa, molestie ultrices nulla 
-                    risus eget leo. Mauris malesuada sapien et massa maximus eleifend. Mauris posuere rhoncus 
-                    mauris sit amet posuere. Sed a nibh quis urna blandit mollis sed nec est. Fusce ultricies tempus libero, 
-                    tristique egestas quam ornare eu. Ut fermentum, elit ac tincidunt mattis, mi est fermentum nisi, ut viverra turpis nunc id velit.
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="userProfileWrapper">
-              <div className="workExperiance">
-                <span className="subHeader">WORK EXPERIANCE</span>
-                <div className="userPersonalInfo">
-                  <label className="userName experiance">
-                    Quartz Events <i id="editWork" onClick={this.editProfile} className="fa fa-pencil" aria-hidden="true"></i>
-                  </label>
-                  <span>Senior Vice President</span>
-                  <span>Jube 2016 - Present</span>
-                  <br/>
-                  <label className="userName experiance">
-                    Quartz Events <i id="editWork" onClick={this.editProfile} className="fa fa-pencil" aria-hidden="true"></i>
-                  </label>
-                  <span>Senior Vice President</span>
-                  <span>Jube 2016 - Present</span>
-                  <label id="addWork" onClick={this.editProfile} className="userName experiance addMore">
-                    <i id="addWork" onClick={this.editProfile} className="fa fa-plus" aria-hidden="true"></i> Previous Work Experience
-                  </label>
-                </div>
-            </div>
-            <div className="userProfileWrapper">
-                <div className="workExperiance">
-                  <span className="subHeader">SPECIAL INTERESTS <i id="editAreaInterest" onClick={this.editProfile} className="fa fa-pencil" aria-hidden="true"></i></span>
-                  {this.createUserIntrest()}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+		<div className="container">
+			<div className="row">
+				<div className="col-lg-3">
+					<div className="profilePicture">
+						<div className="profilePictureImage">
+						  <span className="editSpan">
+						  <a id="editPicture" onClick={this.editProfile} className="editcolor"  aria-hidden="true">EDIT</a>
+						  </span>
+						</div>
+					</div>
+				</div>
+				
+				<div className="col-lg-9">
+					<div className="userPersonalInfo">
+						<div className="userName">
+						{this.props.userDetails.userName}
+						</div>
+						<div>[ {this.props.userDetails.jobTitle} ],  [{this.props.userDetails.company}]
+						<a id="editPersonalnfo" onClick={this.editProfile} className="editcolor" aria-hidden="true"> EDIT</a>
+						</div>
+						<div className="def-padd">
+							<span>{this.props.userDetails.workEmail}</span>
+							<br/>
+							{this.props.userDetails.phoneNumber}
+						</div>
+						<div className="def-padd">[{this.props.userDetails.jobFunction}]</div>
+					</div>
+				</div>
+				
+				<div className="clearfix"></div>
+				<div className="col-lg-12">
+					<div className="desc-block">ABOUT ME <span className="editcolor">SHOW MORE</span><br/>
+						<span className="edit-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+							Vivamus ut feugiat risus. Donec ornare mauris vitae mauris euismod, 
+							nec elementum est porta. Nulla non quam nunc. Sed sit amet magna ut dui molestie 
+							dignissim id a nunc. Fusce ut libero sapien. Duis eu tempus mi. Nulla placerat, 
+							augue vitae dignissim faucibus, tellus felis malesuada massa, molestie ultrices nulla 
+							risus eget leo. Mauris malesuada sapien et massa maximus eleifend. Mauris posuere rhoncus 
+							mauris sit amet posuere. Sed a nibh quis urna blandit mollis sed nec est. Fusce ultricies tempus libero, 
+							tristique egestas quam ornare eu. Ut fermentum, elit ac tincidunt mattis, mi est fermentum nisi, ut viverra turpis nunc id velit.
+						</span>
+					</div>
+					<div className="hrline"></div>
+				</div>
+				
+				<div className="clearfix"></div>
+				<div className="col-lg-5">
+				
+					<div className="expname">
+						<h3>WORK EXPERIANCE 
+						<a id="editWork" onClick={this.editProfile} aria-hidden="true" className="editcolor"> Edit</a></h3>
+						<div className="expname">
+							<h4>Quartz Events </h4>
+							Senior Vice President
+							<br/>
+							Jube 2016 - Present
+						</div>
+						
+						<div className="expname">
+							<h4>Quartz Events </h4>
+							Senior Vice President
+							<br/>
+							Jube 2016 - Present
+						</div>
+						<label id="addWork" onClick={this.editProfile} className="userName experiance addMore">
+							<i id="addWork" onClick={this.editProfile} className="fa fa-plus" aria-hidden="true"></i> Previous Work Experience
+						</label>
+					</div>	
+				</div>
+				
+				
+				<div className="col-lg-7">
+					<h3>Current Company Profile</h3>
+					<div className="row">
+						<div className="col-lg-4">						
+							<div className="companylogo">
+								LOGO
+							</div>						
+						</div>
+						<div className="col-lg-8">
+						<h2>Quartz B2B</h2>
+							<div className="row">
+								<div className="col-lg-6">
+									<span>Industry</span><br/>
+									<span>Revenue</span><br/>
+									<span>Employee Size</span>
+								</div>
+								
+								<div className="col-lg-6">
+									<span>Events</span><br/>
+									<span>$X-X Million</span><br/>
+									<span>1-50</span>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div className="clearfix"></div>
+				<div className="col-lg-12">
+				<div className="hrline"></div>
+				</div>
+				
+				<div className="col-lg-12">
+					<h3>Special Interests
+					<a id="editWork" onClick={this.editProfile} aria-hidden="true" className="editcolor"> Edit</a>
+					</h3>
+					<div className="row">
+						<div className="col-lg-12">
+						<label>Supply Chain</label>
+						</div>
+						<div className="clearfix"></div>
+						<div className="col-lg-3">
+							<div className="interest-box">
+							3PLs
+							</div>
+						</div>
+						<div className="col-lg-3">
+							<div className="interest-box">
+							Procurement & Strategic Sourcing
+							</div>
+						</div>
+						<div className="col-lg-3">
+						</div>
+						<div className="col-lg-3">
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-lg-12">
+							<label>Human Resources</label>
+						</div>
+						<div className="clearfix"></div>
+						<div className="col-lg-3">
+							<div className="interest-box">
+							Recuriting & Staffing
+							</div>
+						</div>
+						<div className="col-lg-3">
+							<div className="interest-box">
+							Benefits & Compensation
+							</div>
+						</div>
+						<div className="col-lg-3">
+							<div className="interest-box">
+							Employee Engagement
+							</div>
+						</div>
+						<div className="col-lg-3">
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+		
+		</div>
+		</div>
+		</div>   
     );
   },
 });
