@@ -9,9 +9,16 @@ field-label{
     padding-left: 2.5%;
 }
 .next{
-    margin-right: 4px !important;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    height: 58px;
+    border-radius: 4px;
+	margin-bottom: 10px;
 }
-
+.QRZT_BasicModal.container{
+	max-width:100%!important;
+}
 .getStarted {
     color: #fff;
     width: 28% !important;
@@ -21,7 +28,12 @@ field-label{
     margin: 15px;
 }
 .previous{
-    margin-left: auto;
+	color: #fff;
+    width: 100%;
+    font-size: 18px;
+    height: 58px;
+    border-radius: 4px;
+	margin-bottom: 10px;
 }
 .drp-btn{
 	float: right;
