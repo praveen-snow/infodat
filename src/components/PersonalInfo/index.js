@@ -71,19 +71,9 @@ render() {
                         <field-label>YEAR</field-label>
 					</div>
 					<div className="clearfix"></div>
-					<div className="col-lg-12">	<div className="txtpadd">To</div></div>
+					<div className="col-lg-12">	<div className="txtpadd">To <br/>Present</div></div>
 				    <div className="clearboth"></div>
-					<div className="field-txt col-lg-6">
-						<input className={"noErrorField"} id="jFunction" type="text" onChange={()=>{return}}/>
-                        <span className="fa fa-caret-down downArrow drp-btn"></span>
-                        <field-label>MONTH</field-label>
-					</div>
-					<div className="field-txt col-lg-6">
-						<input className={"noErrorField"} id="jFunction" type="text" onChange={()=>{return}}/>
-                        <span className="fa fa-caret-down downArrow drp-btn"></span>
-                        <field-label>YEAR</field-label>
-					</div>
-					<div className="clearboth"></div>					
+									
 					<div className="col-lg-12">
 					<div className="space-txt">
 						<textarea className={"noErrorField txt-area"} id="invitationNumber" type="text"/>

@@ -7,7 +7,7 @@ let industryList = ['Supply Chain','Procurement','Manufacturing','Company Inform
 
 let revenueList = ['90K-100K','100K-200K','300K-400K'];
 
-let employeesizeList = ['200','300','400','1000'];
+let employeesizeList = ['1-100','100-200','100-300','300+'];
 
 export default React.createClass({
 mixins: [PureRenderMixin],
@@ -118,7 +118,7 @@ render() {
 					<div className= "field col-lg-12">
 					  <input autoComplete="off" autoComplete="off" onFocus={ this.antiFocus } className={this.state.jFunctionError3 ? "noErrorField errorField" : "noErrorField"} value={this.state.jFunction3} id="jFunction3" onClick={this.showMenu3} type="text" onChange={()=>{return}} required/>
 					  <span onClick={this.showMenu3} className="fa fa-caret-down downArrow drp-btn"></span>
-					  <field-label>INDUSTRY EMPLOYEE SIZE</field-label>
+					  <field-label>EMPLOYEE SIZE</field-label>
 					  { this.state.showMenu3 ? (<ul className="dropDownList">
 						{this.createList3()}
 					  </ul>) : false }
