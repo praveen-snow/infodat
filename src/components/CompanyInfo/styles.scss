@@ -5,16 +5,20 @@
 field-label{
     left: 2.5%;
 }
-
-
-
 .noErrorField{
     padding-left: 2.5%;
 }
 .next{
-    margin-right: 4px !important;
+    color: #fff;
+    width: 100%;
+    font-size: 18px;
+    height: 58px;
+    border-radius: 4px;
+	margin-bottom: 10px;
 }
-
+.QRZT_BasicModal.container{
+	max-width:100%!important;
+}
 .getStarted {
     color: #fff;
     width: 28% !important;
@@ -24,5 +28,76 @@ field-label{
     margin: 15px;
 }
 .previous{
-    margin-left: auto;
+	color: #fff;
+    width: 100%;
+    font-size: 18px;
+    height: 58px;
+    border-radius: 4px;
+	margin-bottom: 10px;
+}
+.drp-btn{
+	float: right;
+	position: relative;
+	z-index: 2;
+	margin-right: 30px;
+	font-size: 26px;
+	margin-top: -41px;
+	color: #000;
+}
+input:focus {
+    outline: none;
+    border: 1px solid #000;
+}
+ul.dropDownList {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    font-size: 14px;
+    text-align: left;
+	color:#000;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+ul.dropDownList li {
+    padding: 8px;
+}
+
+ul.dropDownList li:hover {
+    color: #fff;
+    background-color: #000;
+}
+ul.dropDownList li a{
+    color: #000;
+    text-decoration: none;
+}
+a {
+	font-weight: normal;
+}
+* {
+	box-sizing: border-box;
+}
+.downArrow, .success, .error {
+	float: right;
+	position: relative;
+	z-index: 2;
+	margin-right: 30px;
+	font-size: 26px;
+	margin-top: -41px;
+}
+.success, .error{
+	height: 31px;
+	margin-right: 18px;
+}
+.error{
+	height: 41px;
+	margin-right: 19px;
+	margin-top: -44px;
 }
