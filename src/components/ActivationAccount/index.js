@@ -161,7 +161,7 @@ return (
                     <div className="form-check">
                         <label className="form-check-label">
                             <input  onBlur={()=>{
-                                setTimeout(this.antiFocus, 100);
+                                setTimeout(this.antiFocus, 200);
                                 }} autoComplete="off" onChange={()=>{return}} className={this.state.secQuestionError ? "noErrorField errorField" : "noErrorField"} value={this.state.secQuestion} type="text" onClick={this.showMenu} required/>
                             <span className="fa fa-caret-down downArrow"></span>
                             <field-label>SECURITY QUESTION<sup>*</sup></field-label>
