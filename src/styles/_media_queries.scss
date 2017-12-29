@@ -7,58 +7,21 @@ $smallLandscape: 'only screen and (min-device-width: 320px) and (max-device-widt
 	@if $point == medium {
 		@media #{$medium} {
 			@content;
-			.MainContent {
-				width: 100%!important;
-				margin: auto;
-			}
-			.col-lg-6
-			{
-				width: 50%;
-				float: left;
-				height:0;
-			}
 		}
 	}
 	@else if $point == small {
 		@media #{$small} {
 			@content;
-			.MainContent {
-				width: 100%!important;
-				margin: auto;
-			}
-			.col-lg-6
-			{
-				width: 50%;
-				float: left;
-			}
 		}
 	}
 	@else if $point == smallPortrait {
 		@media #{$smallPortrait} {
 			@content;
-			.MainContent {
-				width: 100%!important;
-				margin: auto;
-			}
-			.col-lg-6
-			{
-				width: 50%;
-				float: left;
-			}
 		}
 	}
 	@else if $point == smallLandscape {
 		@media #{$smallLandscape} {
 			@content;
-			.MainContent {
-				width: 100%!important;
-				margin: auto;
-			}
-			.col-lg-6
-			{
-				width: 50%;
-				float: left;
-			}
 		}
 	}
 }

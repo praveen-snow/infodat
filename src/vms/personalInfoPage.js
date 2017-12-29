@@ -23,11 +23,11 @@ const PersonalInfoSC = function(store) {
                         companyInfoPage: true
                     }
                 }});   
-                store.dispatch({type:'NAV_RESET_CHNAGE_DIRECTIONS'});
+                store.dispatch({type:'NAV_RESET_DIRECTION'});
             }}
             userInfo={store.getState().userInfo.userDetails}
             goBack={()=>{
-                store.dispatch({type:'NAV_CHNAGE_DIRECTIONS'});
+                store.dispatch({type:'NAV_CHANGE_DIRECTION'});
                 store.dispatch({type:'NAV_PUSH_BASE', payload: {
                     current: {
                         profilePicturePage: true

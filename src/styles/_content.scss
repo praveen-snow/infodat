@@ -1,0 +1,48 @@
+@import "_media_queries";
+.MainContent {
+    @include respond(small) {
+        width: 100%!important;
+        margin: auto;
+    }
+    
+    @include respond(smallPortrait) {
+        width: 100%!important;
+        margin: auto;
+    }
+    
+    @include respond(smallLandscape) {
+        width: 100%!important;
+        margin: auto;
+    }
+    
+    @include respond(medium) {
+        width: 100%!important;
+        margin: auto;
+    }
+}
+
+.col-lg-6{
+    @include respond(small) {
+        width: 50%;
+        float: left;
+        height:0;
+    }
+    
+    @include respond(smallPortrait) {
+        width: 50%;
+        float: left;
+        height:0;
+    }
+    
+    @include respond(smallLandscape) {
+        width: 50%;
+        float: left;
+        height:0;
+    }
+    
+    @include respond(medium) {
+        width: 50%;
+        float: left;
+        height:0;
+    }
+}

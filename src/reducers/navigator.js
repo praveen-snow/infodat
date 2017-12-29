@@ -16,8 +16,8 @@ export default (function createNavigationReducer(namespace, initState) {
     const NAV_SET_OVERLAY = 'NAV_SET_OVERLAY_BASE';
     const NAV_SET_ROUTE_STACK = 'NAV_SET_ROUTE_STACK_BASE';
     const NAV_CLEAR_HISTORY = 'NAV_CLEAR_HISTORY_BASE';
-    const NAV_CHNAGE_DIRECTIONS = 'NAV_CHNAGE_DIRECTIONS';
-    const NAV_RESET_CHNAGE_DIRECTIONS = 'NAV_RESET_CHNAGE_DIRECTIONS';
+    const NAV_CHANGE_DIRECTION = 'NAV_CHANGE_DIRECTION';
+    const NAV_RESET_DIRECTION = 'NAV_RESET_DIRECTION';
 
     const initialState = (initState) ? initState : {
         current: {
@@ -47,12 +47,12 @@ export default (function createNavigationReducer(namespace, initState) {
             newState.current = action.current;
             return newState;
         },
-        [NAV_CHNAGE_DIRECTIONS] : (state, action) => {
+        [NAV_CHANGE_DIRECTION] : (state, action) => {
             const newState = {...state};
             newState.enter = {x: spring(-100,[300,20]), z: 2 };
             return newState;
         },
-        [NAV_RESET_CHNAGE_DIRECTIONS] : (state, action) => {
+        [NAV_RESET_DIRECTION] : (state, action) => {
             const newState = {...state};
             newState.enter = undefined;
             return newState;
