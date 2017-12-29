@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = function (requestedSchema) {
-    var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/quartz');
+module.exports = function (mongoose,requestedSchema) {
     var modelSchema = require('./models')(mongoose,requestedSchema);
     return modelSchema;
 }

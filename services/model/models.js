@@ -4,35 +4,29 @@ module.exports = function (mongoose,requestedSchema) {
     var Schema = mongoose.Schema;
     var requiredSchema = '';
     var model = '';
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function() {
-      console.log("connected to db");
-    });
-    var signUpSchema = new Schema({
-        invitationCode:String,
-        userFullName:{  
-           firstName:String,
-           lastName:String
-        },
-        workEmail:String,
-        company:{  
-           companyName:String,
-           companyWebSite:String
-        },
-        job:{  
-           jobFunction:String,
-           jobTitle:String
-        },
-        userPhoneNumber:{  
-           phoneNumber:String,
-           ext:String
-        },
-        PreviousWorkEmail:String,
-        userId:String
-    });
-    if(requestedSchema === 'signUp'){
-        model = mongoose.model('adminInfo', signUpSchema);
+    if(requestedSchema === 'signup'){
+        model = require('./signUp')(Schema,mongoose);
+    }
+    if(requestedSchema === 'appconfig'){
+        model = require('./appConfig')(Schema,mongoose);
+    }
+    if(requestedSchema === 'companyinfo'){
+        model = require('./companyInfo')(Schema,mongoose);
+    }
+    if(requestedSchema === 'useractivation'){
+        model = require('./userActivation')(Schema,mongoose);
+    }
+    if(requestedSchema === 'userareainterest'){
+        model = require('./userAreaInterest')(Schema,mongoose);
+    }
+    if(requestedSchema === 'userprofessionalinfo'){
+        model = require('./userProfessionalInfo')(Schema,mongoose);
+    }
+    if(requestedSchema === 'userinfo'){
+        model = require('./userInfo')(Schema,mongoose);
+    }
+    if(requestedSchema === 'userprofilepicture'){
+        model = require('./userProfilePicture')(Schema,mongoose);
     }
     return model;
 }
