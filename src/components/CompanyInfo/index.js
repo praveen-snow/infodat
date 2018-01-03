@@ -88,7 +88,7 @@ render() {
 				<div className="col-lg-12">
 					<section className="MainContent">				
 						<center>
-							<div>3 of 5</div>
+							<p>3 of 5</p>
 							<div className="heading">Company Information</div>
 						</center>
 						<div className="MainContent">
@@ -132,22 +132,23 @@ render() {
 					</section>
 				</div>
 				<div className="clearfix"></div>
-				<div className="col-lg-6">
-					<section className="MainContent">
-						<button className="previous" 
-						onMouseOver={()=>{
-							this.setState({mouserHover:true});
-						}}
-						onMouseOut={()=>{
-							this.setState({mouserHover:false});
-						}}
-						onClick={this.props.goBack}>PREVIOUS</button>
-					</section>
-				</div>
-				
-				<div className="col-lg-6">
-					<section className="MainContent">
-						<button className={nextClass} onClick={this.props.goToAreaIntrestInfoPage}>NEXT</button>
+				<div className="col-lg-12">
+					<section className="MainContent btn-hight">
+						<div className="row">
+							<div className="col-lg-6">
+								<button className="previous" 
+								onMouseOver={()=>{
+									this.setState({mouserHover:true});
+								}}
+								onMouseOut={()=>{
+									this.setState({mouserHover:false});
+								}}
+								onClick={this.props.goBack}>PREVIOUS</button>
+							</div>
+							<div className="col-lg-6">
+								<button className={nextClass} onClick={this.props.goToAreaIntrestInfoPage}>NEXT</button>
+							</div>
+						</div>
 					</section>
 				</div>
 				<div className="clearfix"></div>

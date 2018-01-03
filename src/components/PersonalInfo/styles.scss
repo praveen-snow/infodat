@@ -7,7 +7,22 @@
     border-radius: 4px;
     margin: 15px;	
 }
+.QRZT_BasicModal .ModalWrap .MainContent{
+	field-label{
+		left:23%;
+		@include respond(medium) {
+			left: 7.5%;
+		}
+		@include respond(small) {
+			left: 7.5%;
+		}
+	}	
+}
+
 .addProfilebg {
+	.MainContent .drp-down field-label{
+		left: 7.5%!important;
+	}
 	.clearboth{
 		clear:both;
 	}
@@ -19,6 +34,10 @@
 	}
 	.MainContent.space-txt textarea{
 		margin-top: 20px;
+	}
+	.addMore{
+		padding: 15px 0;
+    	margin: 0;
 	}
 	.drp-btn{
 	    float: right;

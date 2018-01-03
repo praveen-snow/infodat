@@ -93,9 +93,25 @@
             margin-right: -20px;
         }
         }
+        .col-lg-8
+        {
+            max-width: 100%;
+        }
+        .col-lg-4
+        {
+            max-width: 100%;
+        }
       .strpeEle{
-        width: 60%;
+        width: 65%;
         margin: auto;
+        @include respond(medium) {
+            width: 100%;
+            margin: auto;
+        }
+        @include respond(small) {
+            width: 100%;
+            margin: auto;
+        }
       }
       .wEmail{
 
@@ -326,6 +342,23 @@
         margin-top: -45px;
         margin-left: 230px;
         position: absolute;
+        @include respond(medium) {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 0;
+            padding: 0;
+            position: relative;
+        }
+        @include respond(small) {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 0;
+            padding: 0;
+            position: relative;
+        }
+
       }
       
       form {

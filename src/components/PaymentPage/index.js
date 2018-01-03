@@ -78,7 +78,10 @@ render() {
                 <StripeProvider apiKey="pk_test_6pRNASCoBOKtIshFeQd4XMUh">
                     <Elements>
                         <div className="strpeEle">
-                            <span>Credit or debit card</span>
+                            <div className="col-lg-12">
+                                <span>Credit or debit card</span>
+                            </div>
+                            <div className="col-lg-8">
                             <CardElement
                                 onBlur={this.handleBlur}
                                 onChange={this.handleChange}
@@ -86,12 +89,16 @@ render() {
                                 onReady={this.handleReady}
                                 {...this.createOptions("14px")}
                             />
+                            </div>
+                            <div className="col-lg-4">
                             <center>
                                 <button onClick={this.props.goToBuildProfile}>Submit Payment</button>
                             </center>
+                            </div>
                         </div>
                     </Elements>
                 </StripeProvider>
+		
             </div>
         </div>
     );
