@@ -45,7 +45,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <div className="appBackground">
+    <div className="appBackground">
 		<div className="container">
 			<div className="row">
 				<div className="col-lg-3">
@@ -76,7 +76,7 @@ export default React.createClass({
 				</div>
 				
 				<div className="clearfix"></div>
-				<div className="col-lg-12">
+				{/*<div className="col-lg-12">
 					<div className="desc-block">ABOUT ME <span className="editcolor">SHOW MORE</span><br/>
 						<span className="edit-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 							Vivamus ut feugiat risus. Donec ornare mauris vitae mauris euismod, 
@@ -89,8 +89,28 @@ export default React.createClass({
 						</span>
 					</div>
 					<div className="hrline"></div>
+		</div>*/}
+
+
+			  <div className="col-lg-12">
+				<div className="desc-block">
+				<input type="checkbox" className="read-more-state" id="name" />
+					<span>ABOUT ME</span><label htmlFor="name" className="read-more-trigger"></label>
+					<p className="read-more-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+							Vivamus ut feugiat risus. Donec ornare mauris vitae mauris euismod, 
+							nec elementum est porta. Nulla non quam nunc. Sed sit amet magna ut dui molestie 
+							dignissim id a nunc. Fusce ut libero sapien.
+						<span className="read-more-target">
+						Duis eu tempus mi. Nulla placerat, 
+							augue vitae dignissim faucibus, tellus felis malesuada massa, molestie ultrices nulla 
+							risus eget leo. Mauris malesuada sapien et massa maximus eleifend. Mauris posuere rhoncus 
+							mauris sit amet posuere. Sed a nibh quis urna blandit mollis sed nec est. Fusce ultricies tempus libero, 
+							tristique egestas quam ornare eu. Ut fermentum, elit ac tincidunt mattis, mi est fermentum nisi, ut viverra turpis nunc id velit.</span>
+					</p>
+					<div className="hrline"></div>
 				</div>
-				
+				</div>
+
 				<div className="clearfix"></div>
 				<div className="col-lg-5">
 				
@@ -101,14 +121,14 @@ export default React.createClass({
 							<h4>Quartz Events </h4>
 							Senior Vice President
 							<br/>
-							Jube 2016 - Present
+							June 2016 - Present
 						</div>
 						
 						<div className="expname">
 							<h4>Quartz Events </h4>
 							Senior Vice President
 							<br/>
-							Jube 2016 - Present
+							June 2016 - Present
 						</div>
 						<label id="addWork" onClick={this.editProfile} className="userName experiance addMore">
 							<i id="addWork" onClick={this.editProfile} className="fa fa-plus" aria-hidden="true"></i> Previous Work Experience
@@ -198,22 +218,6 @@ export default React.createClass({
 					</div>
 					
 				</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		
 		</div>
 		</div>
 		</div>   

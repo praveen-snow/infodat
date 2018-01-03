@@ -134,7 +134,25 @@ render() {
                         </div>
                     </div>
                 </div>
-                <center>
+				<div className="col-lg-12">
+					<div className="row">
+						<div className="col-lg-6">
+							<button className="getStarted previous btn-cancel" 
+								onMouseOver={()=>{
+									this.setState({mouserHover:true});
+								}}
+								onMouseOut={()=>{
+									this.setState({mouserHover:false});
+								}}
+								onClick={this.closeModal}>CANCEL
+							</button>
+						</div>
+						<div className="col-lg-6">
+							<button className={nextClass} onClick={this.props.goToCompanyInfoPage}>SAVE CHANGES</button>
+						</div>
+					</div>
+				</div>
+                {/*<center>
                     <button className="getStarted previous" 
                         onMouseOver={()=>{
                             this.setState({mouserHover:true});
@@ -145,7 +163,7 @@ render() {
                         onClick={this.closeModal}>CANCEL
                     </button>
                     <button className={nextClass} onClick={this.props.goToCompanyInfoPage}>SAVE CHANGES</button>
-                </center>
+                </center>*/}
             </div>
         </div>);
     },

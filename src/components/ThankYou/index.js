@@ -24,15 +24,17 @@ render() {
     return (
         <div className="QRZT_BasicModal" onClick={this.props.close}>
             <div className="ModalWrap">
-                <center>
-                    <p className="heading">You're All Set</p>
-                </center>
-                <section className="MainContent">
-                    <p>Thank you for completing your profile. We'll notify you when Think Tank submissions open. In the meantime, log in at any time to edit your profile.</p>
-                </section>
-                <center>
-                    <button className="getStarted" onClick={this.viewProfile}>VIEW PROFILE</button>
-                </center>
+                <div className="col-lg-12">
+                    <center>
+                        <p className="heading">You're All Set</p>
+                    </center>
+                    <section className="MainContent">
+                        <p>Thank you for completing your profile. We'll notify you when Think Tank submissions open. In the meantime, log in at any time to edit your profile.</p>
+                    </section>
+                    <center>
+                        <button className="getStarted" onClick={this.viewProfile}>VIEW PROFILE</button>
+                    </center>
+                </div>
             </div>
         </div>
     );

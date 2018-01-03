@@ -25,24 +25,20 @@
     @include respond(small) {
         width: 50%;
         float: left;
-        height:0;
     }
     
     @include respond(smallPortrait) {
         width: 50%;
         float: left;
-        height:0;
     }
     
     @include respond(smallLandscape) {
         width: 50%;
         float: left;
-        height:0;
     }
     
     @include respond(medium) {
         width: 50%;
         float: left;
-        height:0;
     }
 }
