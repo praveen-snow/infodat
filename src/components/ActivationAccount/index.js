@@ -117,7 +117,7 @@ return (
                 <h2>Activate Your Account</h2>
             </center>
           <section className="MainContent">
-            <p>Thanks for confirming your email address. Please fill out the fileds below and click ACTIVATE to get started.</p>
+            <p>Thanks for confirming your email address. Please fill out the fields below and click ACTIVATE to get started.</p>
           </section>
           <center>
             <div className="field col-lg-12">
