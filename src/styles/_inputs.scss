@@ -22,6 +22,16 @@ input:focus ~ field-label {
     font-size: 10px;
     color: #A5A4A5;
 }
+textarea:focus {
+    outline: none;
+    border: 1px solid #000;
+}
+/* active state */
+textarea:focus ~ field-label {
+    top: 18%;
+    font-size: 10px;
+    color: #A5A4A5;
+}
 
 .noErrorField {
     color: #555;

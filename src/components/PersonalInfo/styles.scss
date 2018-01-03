@@ -21,7 +21,10 @@
 
 .addProfilebg {
 	.MainContent .drp-down field-label{
-		left: 7.5%!important;
+		left: 14.5%!important;
+	}
+	.MainContent .drp-down .noErrorField{
+		padding: 24px 10px 2px 10.5%;
 	}
 	.clearboth{
 		clear:both;
@@ -83,9 +86,10 @@
 	.spanClass{
 		padding-left:15px;
 	}
-	.txt-area{
+	textarea .txt-area{
 		resize: none;
 		height: 20vh;
+		padding: 35px 10px 2px 4.5%!important;
 	}
 	.txtpadd{
 		margin:10px 0;
@@ -93,7 +97,7 @@
 	.noErrorField {
 		color: #555;
 		font-size: 18px;
-		padding: 35px 10px 2px 4.5%;
+		padding: 24px 10px 2px 4.5%;
 		display: block;
 		width: 100%;
 		border: 1px solid #e3e3e3;

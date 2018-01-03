@@ -66,7 +66,7 @@ render() {
 				</div>
 				<div className="col-lg-12">
 					<section className="MainContent">
-						<div className="row">
+						<div className="row drp-down">
 							<div className="col-lg-6">
 								<input className={"noErrorField"} id="jFunction" type="text" onChange={()=>{return}}/>
 								<span className="fa fa-caret-down downArrow drp-btn"></span>
