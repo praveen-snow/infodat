@@ -3,7 +3,7 @@ import React from 'react';
 import ss from './styles.scss';
 import PureRenderMixin  from 'react-addons-pure-render-mixin';
 
-let industryList = ['Supply Chain','Procurement','Manufacturing','Company Information','Finance','Human Resources','Marketing'];
+let industryList = ['Supply Chain','Procurement','Manufacturing','Information Technology','Finance','Human Resources','Marketing'];
 
 let revenueList = ['90K-100K','100K-200K','300K-400K'];
 
